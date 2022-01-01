@@ -39,7 +39,7 @@ class RouteControllerTest {
       //why does /climbs/routes/ work but not just /climbs/routes? it works in practice, but the test doesn't pass
       mockMvc.perform(get("/climbs/routes/"))
             .andExpect(status().isOk())
-            .andExpect(view().name("routes"));
+            .andExpect(view().name("climbs/routes"));
    }
 
    @Test
@@ -58,7 +58,7 @@ class RouteControllerTest {
       String viewName = controller.listRoutes(model);
 
 
-      assertEquals("routes", viewName);
+      assertEquals("climbs/routes", viewName);
       verify(routeService).getClimbs();
       verify(model).addAttribute(eq("routes"), argumentCaptor.capture());
       Set<Route> setInController = argumentCaptor.getValue();

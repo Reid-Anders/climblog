@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::body})">
+'
+    <head>
+        <meta charset="UTF-8">
+        <title>Routes</title>
+
+        <link rel="stylesheet" href="../../static/resources/css/bootstrap.min.css">
+        <script src="../../static/resources/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+
+        <h1 class="text-center text-primary">Boulders</h1>
+
+        <table class="table table-hover">
+            <thead class="table-primary">
+                <th>Name</th>
+                <th>Sector</th>
+                <th>Area</th>
+                <th>Grade</th>
+                <th>Status</th>
+                <th>Edit</th>
+            </thead>
+            <tr th:each="boulder : ${boulders}">
+                <td th:text="${boulder.name}">Baby Cthulhu</td>
+                <td th:text="${boulder.sector}">Burning Man</td>
+                <td th:text="${boulder.area}">Boulderfields</td>
+                <td th:text="${boulder.grade}">V7</td>
+                <td th:text="${boulder.status}">R</td>
+                <td><a href="#" class="link-primary">Edit</a></td>
+            </tr>
+            <tr th:remove="all">
+                <td>Dangleberries</td>
+                <td>Dominator</td>
+                <td>Boulderfields</td>
+                <td>V6</td>
+                <td>R</td>
+                <td><a href="#" class="link-primary">Edit</a></td>
+            </tr>
+            <tr th:remove="all">
+                <td>Detour Stand</td>
+                <td>Driven</td>
+                <td>Boulderfields</td>
+                <td>V8</td>
+                <td>C</td>
+                <td><a href="#" class="link-primary">Edit</a></td>
+            </tr>
+        </table>
+
+    </body>
+</html>

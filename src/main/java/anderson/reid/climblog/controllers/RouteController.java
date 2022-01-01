@@ -19,6 +19,6 @@ public class RouteController {
    @RequestMapping({"", "/"})
    public String listRoutes(Model model) {
       model.addAttribute("routes", routeService.getClimbs());
-      return "routes";
+      return "climbs/routes";
    }
 }

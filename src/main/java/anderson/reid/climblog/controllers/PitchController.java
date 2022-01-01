@@ -5,8 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-//TODO: write test for pitchcontroller
-@RequestMapping("/pitches")
+@RequestMapping("/log/pitches")
 @Controller
 public class PitchController {
 
@@ -19,6 +18,6 @@ public class PitchController {
    @RequestMapping({"", "/"})
    public String listPitches(Model model) {
       model.addAttribute("pitches", pitchService.getPitches());
-      return "pitches";
+      return "log/pitches";
    }
 }

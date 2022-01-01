@@ -1,7 +1,8 @@
 package anderson.reid.climblog.controllers;
 
-import anderson.reid.climblog.domain.Boulder;
-import anderson.reid.climblog.services.ClimbService;
+import anderson.reid.climblog.domain.Pitch;
+import anderson.reid.climblog.services.PitchService;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -22,46 +23,44 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @ExtendWith(MockitoExtension.class)
-class BoulderControllerTest {
+class PitchControllerTest {
 
    @Mock
-   ClimbService<Boulder> boulderService;
+   PitchService pitchService;
 
    @Mock
    Model model;
 
    @InjectMocks
-   BoulderController controller;
+   PitchController controller;
 
    @Test
    void mockMVCTest() throws Exception {
       MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
-      //why does /climbs/routes/ work but not just /climbs/routes? it works in practice, but the test doesn't pass
-      mockMvc.perform(get("/climbs/boulders/"))
+      mockMvc.perform(get("/log/pitches/"))
             .andExpect(status().isOk())
-            .andExpect(view().name("climbs/boulders"));
+            .andExpect(view().name("log/pitches"));
    }
 
    @Test
-   void listRoutesTest() {
-      Boulder r1 = Boulder.builder().id(1L).build();
-      Boulder r2 = Boulder.builder().id(2L).build();
-      Set<Boulder> boulders = new HashSet<>();
-      boulders.add(r1);
-      boulders.add(r2);
+   void listPitches() {
+      //given
+      Pitch p1 = Pitch.builder().id(1L).build();
+      Pitch p2 = Pitch.builder().id(2L).build();
+      Set<Pitch> pitches = new HashSet<>();
+      pitches.add(p1);
+      pitches.add(p2);
 
-      when(boulderService.getClimbs()).thenReturn(boulders);
+      //when
+      when(pitchService.getPitches()).thenReturn(pitches);
+      ArgumentCaptor<Set<Pitch>> argumentCaptor = ArgumentCaptor.forClass(Set.class);
+      String viewName = controller.listPitches(model);
 
-      ArgumentCaptor<Set<Boulder>> argumentCaptor = ArgumentCaptor.forClass(Set.class);
-
-
-      String viewName = controller.listBoulders(model);
-
-
-      assertEquals("climbs/boulders", viewName);
-      verify(boulderService).getClimbs();
-      verify(model).addAttribute(eq("boulders"), argumentCaptor.capture());
-      Set<Boulder> setInController = argumentCaptor.getValue();
+      //then
+      assertEquals("log/pitches", viewName);
+      verify(pitchService).getPitches();
+      verify(model).addAttribute(eq("pitches"), argumentCaptor.capture());
+      Set<Pitch> setInController = argumentCaptor.getValue();
       assertEquals(2, setInController.size());
    }
 }

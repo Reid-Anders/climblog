@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::body})">
+    <head>
+        <meta charset="UTF-8">
+        <title>Climblog</title>
+
+        <link rel="stylesheet" href="../../static/resources/css/bootstrap.min.css">
+        <script src="../../static/resources/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+
+        <h1 class="text-center text-primary">Routes</h1>
+
+        <table class="table table-hover">
+            <thead class="table-primary">
+                <th>Name</th>
+                <th>Sector</th>
+                <th>Area</th>
+                <th>Grade</th>
+                <th>Status</th>
+                <th>Edit</th>
+            </thead>
+            <tr th:each="route : ${routes}">
+                <td th:text="${route.name}">Air Test</td>
+                <td th:text="${route.sector}">Great White</td>
+                <td th:text="${route.area}">Skaha Bluffs</td>
+                <td th:text="${route.grade}">5.13a</td>
+                <td th:text="${route.status}">R</td>
+                <td><a href="#" class="link-primary">Edit</a></td>
+            </tr>
+            <tr th:remove="all">
+                <td>Pressure Test</td>
+                <td>Great White</td>
+                <td>Skaha Bluffs</td>
+                <td>5.13c</td>
+                <td>C</td>
+                <td><a href="#" class="link-primary">Edit</a></td>
+            </tr>
+            <tr th:remove="all">
+                <td>The Replicant</td>
+                <td>The Belfry</td>
+                <td>Skaha Bluffs</td>
+                <td>5.13d</td>
+                <td>C</td>
+                <td><a href="#" class="link-primary">Edit</a></td>
+            </tr>
+        </table>
+
+    </body>
+</html>

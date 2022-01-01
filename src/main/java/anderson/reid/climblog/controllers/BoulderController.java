@@ -19,6 +19,6 @@ public class BoulderController {
    @RequestMapping({"", "/"})
    public String listBoulders(Model model) {
       model.addAttribute("boulders", boulderService.getClimbs());
-      return "boulders";
+      return "climbs/boulders";
    }
 }
