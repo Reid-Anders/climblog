@@ -12,7 +12,6 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
@@ -67,7 +66,7 @@ class RouteControllerTest {
    }
 
    @Test
-   void saveOrUpdateMVCTest() throws Exception {
+   void saveOrUpdateRouteMVCTest() throws Exception {
       mockMvc.perform(post("/climbs/routes/new_route"))
             .andExpect(status().is3xxRedirection())
             .andExpect(view().name("redirect:/climbs/routes"));
@@ -125,7 +124,7 @@ class RouteControllerTest {
 
       //when
       when(routeService.save(any(Route.class))).thenReturn(route);
-      String viewName = controller.saveOrUpdate(new Route());
+      String viewName = controller.saveOrUpdateRoute(new Route());
 
       //then
       assertEquals("redirect:/climbs/routes", viewName);

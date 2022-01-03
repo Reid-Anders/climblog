@@ -3,14 +3,17 @@
 '
     <head>
         <meta charset="UTF-8">
-        <title>Routes</title>
+        <title>Boulders</title>
 
         <link rel="stylesheet" href="../../static/resources/css/bootstrap.min.css">
         <script src="../../static/resources/js/bootstrap.min.js"></script>
     </head>
     <body>
 
-        <h1 class="text-center text-primary">Boulders</h1>
+        <div class="d-flex justify-content-between">
+            <h1 class="text-left text-primary">Boulders</h1>
+            <a class="text-right btn btn-primary m-2" href="#" th:href="@{/climbs/boulders/create}">Create</a>
+        </div>
 
         <table class="table table-hover">
             <thead class="table-primary">

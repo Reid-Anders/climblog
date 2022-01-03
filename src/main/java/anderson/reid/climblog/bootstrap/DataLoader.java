@@ -10,6 +10,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -84,11 +86,39 @@ public class DataLoader implements CommandLineRunner {
       gradeRepository.save(fifteenC);
       gradeRepository.save(fifteenD);
 
-      VGrade v7 = new VGrade("V7");
+      VGrade v0 = new VGrade("V0");
+      VGrade v1 = new VGrade("V1");
+      VGrade v2 = new VGrade("V2");
+      VGrade v3 = new VGrade("V3");
+      VGrade v4 = new VGrade("V4");
+      VGrade v5 = new VGrade("V5");
       VGrade v6 = new VGrade("V6");
+      VGrade v7 = new VGrade("V7");
+      VGrade v8 = new VGrade("V8");
+      VGrade v9 = new VGrade("V9");
+      VGrade v10 = new VGrade("V10");
+      VGrade v11 = new VGrade("V11");
+      VGrade v12 = new VGrade("V12");
+      VGrade v13 = new VGrade("V13");
+      VGrade v14 = new VGrade("V14");
+      VGrade v15 = new VGrade("v15");
 
-      gradeRepository.save(v7);
+      gradeRepository.save(v0);
+      gradeRepository.save(v1);
+      gradeRepository.save(v2);
+      gradeRepository.save(v3);
+      gradeRepository.save(v4);
+      gradeRepository.save(v5);
       gradeRepository.save(v6);
+      gradeRepository.save(v7);
+      gradeRepository.save(v8);
+      gradeRepository.save(v9);
+      gradeRepository.save(v10);
+      gradeRepository.save(v11);
+      gradeRepository.save(v12);
+      gradeRepository.save(v13);
+      gradeRepository.save(v14);
+      gradeRepository.save(v15);
 
       Route r1 = Route.builder()
             .name("Air Test")

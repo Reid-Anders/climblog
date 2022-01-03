@@ -40,6 +40,7 @@ public class VGrade extends Grade {
       this.suffix = Integer.toString(n);
    }
 
+   //todo: implement test for sorting
    @Override
    public int compareTo(Grade o) {
       VGrade vGrade = (VGrade) o;
