@@ -23,4 +23,9 @@ public class JPAPitchService implements PitchService {
       pitchRepository.findAll().iterator().forEachRemaining(pitches::add);
       return pitches;
    }
+
+   @Override
+   public Pitch save(Pitch pitch) {
+      return pitchRepository.save(pitch);
+   }
 }

@@ -33,4 +33,8 @@ public abstract class Climb {
    @Column(name = "status")
    protected char status;
 
+   @Override
+   public String toString() {
+      return this.name + ", " + this.grade;
+   }
 }

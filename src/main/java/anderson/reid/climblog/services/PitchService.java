@@ -7,4 +7,5 @@ import java.util.Set;
 public interface PitchService {
 
    Set<Pitch> getPitches();
+   Pitch save(Pitch pitch);
 }

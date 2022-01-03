@@ -118,7 +118,6 @@ class BoulderControllerTest {
       assertEquals(2, listInController.size());
    }
 
-
    @Test
    void saveNewRouteTest() {
       //given

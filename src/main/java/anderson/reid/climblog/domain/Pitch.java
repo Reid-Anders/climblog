@@ -1,40 +1,30 @@
 package anderson.reid.climblog.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.thymeleaf.util.StringUtils;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Data
-@AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
-@Builder
 @Entity
 @Table(name = "pitches")
-public class Pitch {
-
-   @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private Long id;
+public class Pitch extends SessionClimb {
 
    @ManyToOne
    @JoinColumn(name = "route_id")
    private Route route;
 
-   @Column(name = "date")
-   private LocalDate date;
-
    @Column(name = "partner")
    private String partner;
 
-   @Column(name = "type")
-   private char type;
-
-   @Lob
-   @Column(name = "notes")
-   private String notes;
+   @Builder
+   public Pitch(Long id, LocalDate date, char type, String notes, Route route, String partner) {
+      super(id, date, type, notes);
+      this.route = route;
+      this.partner = partner;
+   }
 }

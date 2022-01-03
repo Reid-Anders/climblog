@@ -12,12 +12,20 @@ class RouteTest {
    final static String AREA = "Skaha Bluffs";
    final static Grade GRADE = new YDSGrade("5.13a");
    final static char STATUS = 'R';
+   final static Integer LENGTH = 30;
 
    Route route;
 
    @BeforeEach
    void setUp() {
-      route = Route.builder().name(NAME).sector(SECTOR).area(AREA).grade(GRADE).status(STATUS).build();
+      route = Route.builder()
+            .name(NAME)
+            .sector(SECTOR)
+            .area(AREA)
+            .grade(GRADE)
+            .status(STATUS)
+            .length(LENGTH)
+            .build();
    }
 
    @Test
@@ -27,5 +35,6 @@ class RouteTest {
       assertEquals(AREA, route.getArea());
       assertEquals(GRADE, route.getGrade());
       assertEquals(STATUS, route.getStatus());
+      assertEquals(LENGTH, route.getLength());
    }
 }

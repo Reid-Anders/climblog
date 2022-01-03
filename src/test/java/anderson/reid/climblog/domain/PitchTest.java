@@ -25,7 +25,13 @@ class PitchTest {
 
    @BeforeEach
    void setUp() {
-      pitch = Pitch.builder().route(ROUTE).date(DATE).partner(PARTNER).type(TYPE).notes(NOTES).build();
+      pitch = Pitch.builder()
+            .route(ROUTE)
+            .date(DATE)
+            .partner(PARTNER)
+            .type(TYPE)
+            .notes(NOTES)
+            .build();
    }
 
    @Test

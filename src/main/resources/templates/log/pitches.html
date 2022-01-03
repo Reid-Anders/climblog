@@ -11,14 +11,17 @@
 
     <body>
 
-        <h1 class="text-center text-primary">Pitches</h1>
+        <div class="d-flex justify-content-between">
+            <h1 class="text-left text-primary">Pitches</h1>
+            <a class="text-right btn btn-primary m-2" href="#" th:href="@{/log/pitches/create}">Add Pitch</a>
+        </div>
 
         <table class="table table-hover">
             <thead class="table-primary">
                 <th>Name</th>
-                <th>Sector</th>
-                <th>Date</th>
                 <th>Grade</th>
+                <th>Date</th>
+                <th>Partner</th>
                 <th>Type</th>
                 <th>Notes</th>
                 <th>Edit</th>
@@ -26,7 +29,7 @@
             <tr th:each="pitch : ${pitches}">
                 <td th:text="${pitch.route.name}">Name</td>
                 <td th:text="${pitch.route.grade}">Grade</td>
-                <td th:text="${pitch.date}">Date</td>
+                <td th:text="${pitch.dateString()}">Date</td>
                 <td th:text="${pitch.partner}">Partner</td>
                 <td th:text="${pitch.type}">Type</td>
                 <td th:text="${pitch.notes}">Notes</td>

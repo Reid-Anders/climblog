@@ -1,5 +1,6 @@
 package anderson.reid.climblog.domain;
 
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
@@ -8,7 +9,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @NoArgsConstructor
-@EqualsAndHashCode
+@Data
 @Entity
 @Table(name = "grades")
 public abstract class Grade implements Comparable<Grade> {
@@ -23,14 +24,6 @@ public abstract class Grade implements Comparable<Grade> {
    @Override
    public String toString() {
       return this.prefix + this.suffix;
-   }
-
-   public Long getId() {
-      return this.id;
-   }
-
-   public void setId(Long id) {
-      this.id = id;
    }
 
    public abstract void increment();
