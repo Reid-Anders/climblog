@@ -21,6 +21,7 @@
                 <th>Area</th>
                 <th>Grade</th>
                 <th>Status</th>
+                <th>Length</th>
                 <th>Edit</th>
             </thead>
             <tr th:each="route : ${routes}">
@@ -29,6 +30,7 @@
                 <td th:text="${route.area}">Skaha Bluffs</td>
                 <td th:text="${route.grade}">5.13a</td>
                 <td th:text="${route.status}">R</td>
+                <td th:text="${route.length} + 'm'">40m</td>
                 <td><a href="#" class="link-primary">Edit</a></td>
             </tr>
             <tr th:remove="all">
@@ -37,6 +39,7 @@
                 <td>Skaha Bluffs</td>
                 <td>5.13c</td>
                 <td>C</td>
+                <td>40m</td>
                 <td><a href="#" class="link-primary">Edit</a></td>
             </tr>
             <tr th:remove="all">
@@ -45,6 +48,7 @@
                 <td>Skaha Bluffs</td>
                 <td>5.13d</td>
                 <td>C</td>
+                <td>30m</td>
                 <td><a href="#" class="link-primary">Edit</a></td>
             </tr>
         </table>

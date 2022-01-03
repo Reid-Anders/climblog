@@ -3,7 +3,7 @@ package anderson.reid.climblog.controllers;
 import anderson.reid.climblog.domain.Pitch;
 import anderson.reid.climblog.domain.Route;
 import anderson.reid.climblog.services.ClimbService;
-import anderson.reid.climblog.services.PitchService;
+import anderson.reid.climblog.services.SessionClimbService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,23 +11,21 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.time.LocalDate;
-
 @RequestMapping("/log/pitches")
 @Controller
 public class PitchController {
 
-   private final PitchService pitchService;
+   private final SessionClimbService<Pitch> pitchService;
    private final ClimbService<Route> routeService;
 
-   public PitchController(PitchService pitchService, ClimbService<Route> routeService) {
+   public PitchController(SessionClimbService<Pitch> pitchService, ClimbService<Route> routeService) {
       this.pitchService = pitchService;
       this.routeService = routeService;
    }
 
    @RequestMapping({"", "/"})
    public String listPitches(Model model) {
-      model.addAttribute("pitches", pitchService.getPitches());
+      model.addAttribute("pitches", pitchService.getSessionClimbs());
       return "log/pitches";
    }
 

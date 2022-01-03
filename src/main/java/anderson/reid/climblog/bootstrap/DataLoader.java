@@ -1,17 +1,11 @@
 package anderson.reid.climblog.bootstrap;
 
 import anderson.reid.climblog.domain.*;
-import anderson.reid.climblog.repositories.BoulderRepository;
-import anderson.reid.climblog.repositories.PitchRepository;
-import anderson.reid.climblog.repositories.RouteRepository;
-import anderson.reid.climblog.repositories.GradeRepository;
-import org.apache.tomcat.util.buf.UDecoder;
+import anderson.reid.climblog.repositories.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -19,12 +13,14 @@ public class DataLoader implements CommandLineRunner {
    private final RouteRepository routeRepository;
    private final BoulderRepository boulderRepository;
    private final PitchRepository pitchRepository;
+   private final BoulderSessionRepository boulderSessionRepository;
    private final GradeRepository gradeRepository;
 
-   public DataLoader(RouteRepository routeRepository, BoulderRepository boulderRepository, PitchRepository pitchRepository, GradeRepository gradeRepository) {
+   public DataLoader(RouteRepository routeRepository, BoulderRepository boulderRepository, PitchRepository pitchRepository, BoulderSessionRepository boulderSessionRepository, GradeRepository gradeRepository) {
       this.routeRepository = routeRepository;
       this.boulderRepository = boulderRepository;
       this.pitchRepository = pitchRepository;
+      this.boulderSessionRepository = boulderSessionRepository;
       this.gradeRepository = gradeRepository;
    }
 
@@ -126,6 +122,7 @@ public class DataLoader implements CommandLineRunner {
             .area("Skaha Bluffs")
             .grade(thirteenA)
             .status('R')
+            .length(40)
             .build();
 
       Route r2 = Route.builder()
@@ -134,6 +131,7 @@ public class DataLoader implements CommandLineRunner {
             .area("Lonely Crags")
             .grade(twelveA)
             .status('R')
+            .length(15)
             .build();
 
       Route r3 = Route.builder()
@@ -142,6 +140,7 @@ public class DataLoader implements CommandLineRunner {
             .area("Skaha Bluffs")
             .grade(thirteenC)
             .status('C')
+            .length(38)
             .build();
 
       routeRepository.save(r1);
@@ -194,5 +193,26 @@ public class DataLoader implements CommandLineRunner {
       pitchRepository.save(p1);
       pitchRepository.save(p2);
       pitchRepository.save(p3);
+
+      BoulderSession bs1 = BoulderSession.builder()
+            .boulder(b1)
+            .date(LocalDate.now())
+            .attempts(15)
+            .type('R')
+            .spotters("")
+            .notes("One of the best climbs I've ever done")
+            .build();
+
+      BoulderSession bs2 = BoulderSession.builder()
+            .boulder(b2)
+            .date(LocalDate.now())
+            .attempts(11)
+            .type('C')
+            .spotters("Val Day")
+            .notes("Really good tries today")
+            .build();
+
+      boulderSessionRepository.save(bs1);
+      boulderSessionRepository.save(bs2);
    }
 }

@@ -2,7 +2,7 @@ package anderson.reid.climblog.controllers;
 
 import anderson.reid.climblog.domain.*;
 import anderson.reid.climblog.services.ClimbService;
-import anderson.reid.climblog.services.PitchService;
+import anderson.reid.climblog.services.SessionClimbService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -29,7 +29,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class PitchControllerTest {
 
    @Mock
-   PitchService pitchService;
+   SessionClimbService<Pitch> pitchService;
 
    @Mock
    ClimbService<Route> routeService;
@@ -66,21 +66,21 @@ class PitchControllerTest {
       //given
       Pitch p1 = Pitch.builder().id(1L).build();
       Pitch p2 = Pitch.builder().id(2L).build();
-      Set<Pitch> pitches = new HashSet<>();
+      List<Pitch> pitches = new ArrayList<>();
       pitches.add(p1);
       pitches.add(p2);
 
       //when
-      when(pitchService.getPitches()).thenReturn(pitches);
-      ArgumentCaptor<Set<Pitch>> argumentCaptor = ArgumentCaptor.forClass(Set.class);
+      when(pitchService.getSessionClimbs()).thenReturn(pitches);
+      ArgumentCaptor<List<Pitch>> argumentCaptor = ArgumentCaptor.forClass(List.class);
       String viewName = controller.listPitches(model);
 
       //then
       assertEquals("log/pitches", viewName);
-      verify(pitchService).getPitches();
+      verify(pitchService).getSessionClimbs();
       verify(model).addAttribute(eq("pitches"), argumentCaptor.capture());
-      Set<Pitch> setInController = argumentCaptor.getValue();
-      assertEquals(2, setInController.size());
+      List<Pitch> listInController = argumentCaptor.getValue();
+      assertEquals(2, listInController.size());
    }
 
    @Test
