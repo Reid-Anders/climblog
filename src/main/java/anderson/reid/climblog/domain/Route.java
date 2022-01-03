@@ -1,16 +1,15 @@
 package anderson.reid.climblog.domain;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+@Getter
+@Setter
 @EqualsAndHashCode(callSuper = true)
-@Data
 @NoArgsConstructor
 @Entity
 @Table(name = "routes")

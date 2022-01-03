@@ -1,5 +1,4 @@
 package anderson.reid.climblog.domain;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -36,5 +35,19 @@ public abstract class Climb {
    @Override
    public String toString() {
       return this.name + ", " + this.grade;
+   }
+
+   public void updateStatus(char type) {
+      switch (this.status) {
+         case 'G':
+            if(type == 'C' || type == 'R' || type == 'F' || type == 'O') {
+               this.status = type;
+            }
+            break;
+         case 'C':
+            if(type == 'R') {
+               this.status = type;
+            }
+      }
    }
 }

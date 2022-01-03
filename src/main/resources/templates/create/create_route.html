@@ -16,15 +16,15 @@
             <form th:object="${route}" th:action="@{/climbs/routes/new_route/}" method="post">
                 <input type="hidden" th:field="*{id}" />
                 <div class="form-floating mb-3 mt-3">
-                    <input type="text" class="form-control" id="name" placeholder="Name" name="name" th:field="*{name}">
+                    <input type="text" class="form-control" id="name" placeholder="Name" name="name" th:field="*{name}" required>
                     <label for="name">Name</label>
                 </div>
                 <div class="form-floating mb-3 mt-3">
-                    <input type="text" class="form-control" id="sector" placeholder="Sector" name="sector" th:field="*{sector}">
+                    <input type="text" class="form-control" id="sector" placeholder="Sector" name="sector" th:field="*{sector}" required>
                     <label for="sector">Sector</label>
                 </div>
                 <div class="form-floating mb-3 mt-3">
-                    <input type="text" class="form-control" id="area" placeholder="Area" name="area" th:field="*{area}">
+                    <input type="text" class="form-control" id="area" placeholder="Area" name="area" th:field="*{area}" required>
                     <label for="area">Area</label>
                 </div>
                 <div class="row mx-auto mb-2">
@@ -59,11 +59,25 @@
                         </div>
                     </div>
                 </div>
-                <select class="form-select mb-3" th:field="*{grade}">
-                    <option value="5.10a" th:each="grade : ${grades}" th:value="${grade.id}" th:text="${grade}">5.10a</option>
-                    <option value="5.10b" th:remove="all">5.10b</option>
-                    <option value="5.10c" th:remove="all">5.10c</option>
-                </select>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-floating mb-3 mt-3">
+                            <input type="number" class="form-control" id="length" placeholder="Length" name="length" max="100" min="0" th:field="*{length}" required>
+                            <label for="area">Length</label>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-floating mb-3 mt-3">
+                            <select class="form-select" id="grade" placeholder="Grade" th:field="*{grade}">
+                                <option class="align-middle" value="5.10a" th:each="grade : ${grades}" th:value="${grade.id}" th:text="${grade}">5.10a</option>
+                                <option value="5.10b" th:remove="all">5.10b</option>
+                                <option value="5.10c" th:remove="all">5.10c</option>
+                            </select>
+                            <label for="grade">Grade</label>
+                        </div>
+                    </div>
+                </div>
+
                 <input type="submit" class="btn btn-primary" value="Submit" />
             </form>
         </div>

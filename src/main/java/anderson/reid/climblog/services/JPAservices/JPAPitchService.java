@@ -2,6 +2,7 @@ package anderson.reid.climblog.services.JPAservices;
 
 import anderson.reid.climblog.domain.Pitch;
 import anderson.reid.climblog.repositories.PitchRepository;
+import anderson.reid.climblog.repositories.RouteRepository;
 import anderson.reid.climblog.services.SessionClimbService;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +13,11 @@ import java.util.List;
 public class JPAPitchService implements SessionClimbService<Pitch> {
 
    private final PitchRepository pitchRepository;
+   private final RouteRepository routeRepository;
 
-   public JPAPitchService(PitchRepository pitchRepository) {
+   public JPAPitchService(PitchRepository pitchRepository, RouteRepository routeRepository) {
       this.pitchRepository = pitchRepository;
+      this.routeRepository = routeRepository;
    }
 
    @Override
@@ -26,6 +29,8 @@ public class JPAPitchService implements SessionClimbService<Pitch> {
 
    @Override
    public Pitch save(Pitch sessionClimb) {
+      sessionClimb.getRoute().updateStatus(sessionClimb.getType());
+      routeRepository.save(sessionClimb.getRoute());
       return pitchRepository.save(sessionClimb);
    }
 }

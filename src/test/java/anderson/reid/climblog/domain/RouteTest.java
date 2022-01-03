@@ -37,4 +37,9 @@ class RouteTest {
       assertEquals(STATUS, route.getStatus());
       assertEquals(LENGTH, route.getLength());
    }
+
+   @Test
+   void testStatusChange() {
+
+   }
 }
