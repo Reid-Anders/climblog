@@ -31,4 +31,9 @@ public class JPARouteService implements ClimbService<Route> {
       Optional<Route> optionalRoute = routeRepository.findById(id);
       return optionalRoute.orElse(null);
    }
+
+   @Override
+   public Route save(Route climb) {
+      return routeRepository.save(climb);
+   }
 }

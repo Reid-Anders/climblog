@@ -5,6 +5,7 @@ import anderson.reid.climblog.repositories.BoulderRepository;
 import anderson.reid.climblog.repositories.PitchRepository;
 import anderson.reid.climblog.repositories.RouteRepository;
 import anderson.reid.climblog.repositories.GradeRepository;
+import org.apache.tomcat.util.buf.UDecoder;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -27,13 +28,61 @@ public class DataLoader implements CommandLineRunner {
 
    @Override
    public void run(String... args) throws Exception {
-      YDSGrade g1 = new YDSGrade("5.13a");
-      YDSGrade g2 = new YDSGrade("5.12a");
-      YDSGrade g3 = new YDSGrade("5.13c");
+      YDSGrade seven = new YDSGrade("5.7");
+      YDSGrade eight = new YDSGrade("5.8");
+      YDSGrade nine = new YDSGrade("5.9");
+      YDSGrade tenA = new YDSGrade("5.10a");
+      YDSGrade tenB = new YDSGrade("5.10b");
+      YDSGrade tenC = new YDSGrade("5.10c");
+      YDSGrade tenD = new YDSGrade("5.10d");
+      YDSGrade elevenA = new YDSGrade("5.11a");
+      YDSGrade elevenB = new YDSGrade("5.11b");
+      YDSGrade elevenC = new YDSGrade("5.11c");
+      YDSGrade elevenD = new YDSGrade("5.11d");
+      YDSGrade twelveA = new YDSGrade("5.12a");
+      YDSGrade twelveB = new YDSGrade("5.12b");
+      YDSGrade twelveC = new YDSGrade("5.12c");
+      YDSGrade twelveD = new YDSGrade("5.12d");
+      YDSGrade thirteenA = new YDSGrade("5.13a");
+      YDSGrade thirteenB = new YDSGrade("5.13b");
+      YDSGrade thirteenC = new YDSGrade("5.13c");
+      YDSGrade thirteenD = new YDSGrade("5.13d");
+      YDSGrade fourteenA = new YDSGrade("5.14a");
+      YDSGrade fourteenB = new YDSGrade("5.14b");
+      YDSGrade fourteenC = new YDSGrade("5.14c");
+      YDSGrade fourteenD = new YDSGrade("5.14d");
+      YDSGrade fifteenA = new YDSGrade("5.15a");
+      YDSGrade fifteenB = new YDSGrade("5.15b");
+      YDSGrade fifteenC = new YDSGrade("5.15c");
+      YDSGrade fifteenD = new YDSGrade("5.15d");
 
-      gradeRepository.save(g1);
-      gradeRepository.save(g2);
-      gradeRepository.save(g3);
+      gradeRepository.save(seven);
+      gradeRepository.save(eight);
+      gradeRepository.save(nine);
+      gradeRepository.save(tenA);
+      gradeRepository.save(tenB);
+      gradeRepository.save(tenC);
+      gradeRepository.save(tenD);
+      gradeRepository.save(elevenA);
+      gradeRepository.save(elevenB);
+      gradeRepository.save(elevenC);
+      gradeRepository.save(elevenD);
+      gradeRepository.save(twelveA);
+      gradeRepository.save(twelveB);
+      gradeRepository.save(twelveC);
+      gradeRepository.save(twelveD);
+      gradeRepository.save(thirteenA);
+      gradeRepository.save(thirteenB);
+      gradeRepository.save(thirteenC);
+      gradeRepository.save(thirteenD);
+      gradeRepository.save(fourteenA);
+      gradeRepository.save(fourteenB);
+      gradeRepository.save(fourteenC);
+      gradeRepository.save(fourteenD);
+      gradeRepository.save(fifteenA);
+      gradeRepository.save(fifteenB);
+      gradeRepository.save(fifteenC);
+      gradeRepository.save(fifteenD);
 
       VGrade v7 = new VGrade("V7");
       VGrade v6 = new VGrade("V6");
@@ -45,7 +94,7 @@ public class DataLoader implements CommandLineRunner {
             .name("Air Test")
             .sector("Doctor's Wall")
             .area("Skaha Bluffs")
-            .grade(g1)
+            .grade(thirteenA)
             .status('R')
             .build();
 
@@ -53,7 +102,7 @@ public class DataLoader implements CommandLineRunner {
             .name("State of Love and Trust")
             .sector("Lonely Boy")
             .area("Lonely Crags")
-            .grade(g2)
+            .grade(twelveA)
             .status('R')
             .build();
 
@@ -61,7 +110,7 @@ public class DataLoader implements CommandLineRunner {
             .name("Pressure Test")
             .sector("Great White")
             .area("Skaha Bluffs")
-            .grade(g3)
+            .grade(thirteenC)
             .status('C')
             .build();
 

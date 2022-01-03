@@ -30,4 +30,9 @@ public class JPABoulderService implements ClimbService<Boulder> {
       Optional<Boulder> optionalBoulder = boulderRepository.findById(id);
       return optionalBoulder.orElse(null);
    }
+
+   @Override
+   public Boulder save(Boulder climb) {
+      return boulderRepository.save(climb);
+   }
 }

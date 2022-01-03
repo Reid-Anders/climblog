@@ -2,6 +2,7 @@ package anderson.reid.climblog.domain;
 
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.springframework.boot.CommandLineRunner;
 
 import javax.persistence.*;
 import java.util.List;
@@ -10,11 +11,11 @@ import java.util.List;
 @EqualsAndHashCode
 @Entity
 @Table(name = "grades")
-public abstract class Grade {
+public abstract class Grade implements Comparable<Grade> {
 
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
-   Long id;
+   protected Long id;
 
    protected String prefix;
    protected String suffix;
@@ -22,6 +23,14 @@ public abstract class Grade {
    @Override
    public String toString() {
       return this.prefix + this.suffix;
+   }
+
+   public Long getId() {
+      return this.id;
+   }
+
+   public void setId(Long id) {
+      this.id = id;
    }
 
    public abstract void increment();

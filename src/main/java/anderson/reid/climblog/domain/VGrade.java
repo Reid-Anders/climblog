@@ -39,4 +39,10 @@ public class VGrade extends Grade {
 
       this.suffix = Integer.toString(n);
    }
+
+   @Override
+   public int compareTo(Grade o) {
+      VGrade vGrade = (VGrade) o;
+      return Integer.compare(n, vGrade.n);
+   }
 }
