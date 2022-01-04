@@ -1,20 +1,18 @@
 package anderson.reid.climblog.services.JPAservices;
 
 import anderson.reid.climblog.domain.Grade;
+import anderson.reid.climblog.domain.VGrade;
 import anderson.reid.climblog.domain.YDSGrade;
 import anderson.reid.climblog.repositories.GradeRepository;
-import anderson.reid.climblog.services.GradeService;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyLong;
@@ -22,29 +20,31 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class JPAGradeServiceYDSTest {
+class JPAGradeServiceVTest {
 
    @Mock
    GradeRepository gradeRepository;
 
    @InjectMocks
-   JPAGradeServiceYDS gradeService;
+   JPAGradeServiceV service;
 
    @Test
-   void getGrades() {
+   void getGradesTest() {
       //given
       YDSGrade g1 = new YDSGrade("5.13a");
-      YDSGrade g2 = new YDSGrade("5.13b");
-      Set<Grade> grades = new HashSet<>();
+      VGrade v1 = new VGrade("V0");
+      VGrade v2 = new VGrade("V1");
+      List<Grade> grades = new ArrayList<>();
       grades.add(g1);
-      grades.add(g2);
+      grades.add(v1);
+      grades.add(v2);
 
       //when
       when(gradeRepository.findAll()).thenReturn(grades);
-      List<YDSGrade> returnedGrades = gradeService.getGrades();
+      List<VGrade> returnedGrades = service.getGrades();
 
       //then
-      assertEquals(2, returnedGrades.size());
       verify(gradeRepository).findAll();
+      assertEquals(2, returnedGrades.size());
    }
 }
