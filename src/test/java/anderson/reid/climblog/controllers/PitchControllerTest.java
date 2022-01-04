@@ -86,22 +86,22 @@ class PitchControllerTest {
    @Test
    void createPitchTest() {
       //given
-      Route r1 = Route.builder().id(1L).build();
-      Route r2 = Route.builder().id(2L).build();
-      Set<Route> routes = new HashSet<>();
+      Route r1 = Route.builder().id(1L).grade(new YDSGrade("5.12a")).build();
+      Route r2 = Route.builder().id(2L).grade(new YDSGrade("5.11a")).build();
+      List<Route> routes = new ArrayList<>();
       routes.add(r1);
       routes.add(r2);
 
       //when
       when(routeService.getClimbs()).thenReturn(routes);
       String viewName = controller.createPitch(model);
-      ArgumentCaptor<Set<Route>> argumentCaptor = ArgumentCaptor.forClass(Set.class);
+      ArgumentCaptor<List<Route>> argumentCaptor = ArgumentCaptor.forClass(List.class);
 
       //then
       assertEquals("create/create_pitch", viewName);
       verify(model).addAttribute(eq("pitch"), any(Pitch.class));
       verify(model).addAttribute(eq("routes"), argumentCaptor.capture());
-      Set<Route> setInController = argumentCaptor.getValue();
+      List<Route> setInController = argumentCaptor.getValue();
       assertEquals(2, setInController.size());
    }
 }

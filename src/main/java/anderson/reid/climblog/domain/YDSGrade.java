@@ -81,11 +81,10 @@ public class YDSGrade extends Grade {
       this.prefix = "5.";
    }
 
-   //todo: implement test for sorting
    @Override
    public int compareTo(Grade o) {
       YDSGrade ydsGrade = (YDSGrade) o;
 
-      return (this.n == ydsGrade.n ? Character.compare(this.c, ydsGrade.c) : Integer.compare(this.n, ydsGrade.c) * -1);
+      return this.n == ydsGrade.n ? Character.compare(this.c, ydsGrade.c) : Integer.compare(this.n, ydsGrade.n);
    }
 }

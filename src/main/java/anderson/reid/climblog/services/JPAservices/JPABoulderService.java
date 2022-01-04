@@ -5,9 +5,7 @@ import anderson.reid.climblog.repositories.BoulderRepository;
 import anderson.reid.climblog.services.ClimbService;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class JPABoulderService implements ClimbService<Boulder> {
@@ -19,9 +17,10 @@ public class JPABoulderService implements ClimbService<Boulder> {
    }
 
    @Override
-   public Set<Boulder> getClimbs() {
-      Set<Boulder> boulders = new HashSet<>();
+   public List<Boulder> getClimbs() {
+      List<Boulder> boulders = new ArrayList<>();
       boulderRepository.findAll().iterator().forEachRemaining(boulders::add);
+      Collections.sort(boulders);
       return boulders;
    }
 

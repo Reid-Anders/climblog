@@ -10,7 +10,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @MappedSuperclass
-public abstract class Climb {
+public abstract class Climb implements Comparable<Climb> {
 
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,6 +35,11 @@ public abstract class Climb {
    @Override
    public String toString() {
       return this.name + ", " + this.grade;
+   }
+
+   @Override
+   public int compareTo(Climb o) {
+      return this.grade.equals(o.grade) ? this.name.compareTo(o.name) : this.grade.compareTo(o.grade);
    }
 
    public void updateStatus(char type) {

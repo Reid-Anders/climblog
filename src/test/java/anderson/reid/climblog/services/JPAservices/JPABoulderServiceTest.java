@@ -2,6 +2,7 @@ package anderson.reid.climblog.services.JPAservices;
 
 import anderson.reid.climblog.domain.Boulder;
 import anderson.reid.climblog.domain.Route;
+import anderson.reid.climblog.domain.VGrade;
 import anderson.reid.climblog.repositories.BoulderRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,6 +12,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -31,12 +33,12 @@ class JPABoulderServiceTest {
    @Test
    void getBouldersTest() {
       Set<Boulder> testBoulders = new HashSet<>();
-      testBoulders.add(Boulder.builder().id(1L).build());
-      testBoulders.add(Boulder.builder().id(2L).build());
+      testBoulders.add(Boulder.builder().id(1L).grade(new VGrade("V0")).build());
+      testBoulders.add(Boulder.builder().id(2L).grade(new VGrade("V1")).build());
 
       when(boulderRepository.findAll()).thenReturn(testBoulders);
 
-      Set<Boulder> returnedRoutes = boulderService.getClimbs();
+      List<Boulder> returnedRoutes = boulderService.getClimbs();
 
       assertNotNull(returnedRoutes);
       assertEquals(2, returnedRoutes.size());

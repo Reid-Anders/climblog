@@ -1,6 +1,7 @@
 package anderson.reid.climblog.services.JPAservices;
 
 import anderson.reid.climblog.domain.Route;
+import anderson.reid.climblog.domain.YDSGrade;
 import anderson.reid.climblog.repositories.RouteRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,9 +10,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -27,13 +26,13 @@ class JPARouteServiceTest {
 
    @Test
    void getRoutesTest() {
-      Set<Route> testRoutes = new HashSet<>();
-      testRoutes.add(Route.builder().id(1L).name("Air Test").build());
-      testRoutes.add(Route.builder().id(2L).name("Pressure Test").build());
+      List<Route> testRoutes = new ArrayList<>();
+      testRoutes.add(Route.builder().id(1L).name("Air Test").grade(new YDSGrade("5.13a")).build());
+      testRoutes.add(Route.builder().id(2L).name("Pressure Test").grade(new YDSGrade("5.13c")).build());
 
       when(routeRepository.findAll()).thenReturn(testRoutes);
 
-      Set<Route> returnedRoutes = routeService.getClimbs();
+      List<Route> returnedRoutes = routeService.getClimbs();
 
       assertNotNull(returnedRoutes);
       assertEquals(2, returnedRoutes.size());

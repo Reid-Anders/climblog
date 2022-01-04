@@ -77,13 +77,13 @@ class BoulderControllerTest {
    void listRoutesTest() {
       Boulder r1 = Boulder.builder().id(1L).build();
       Boulder r2 = Boulder.builder().id(2L).build();
-      Set<Boulder> boulders = new HashSet<>();
+      List<Boulder> boulders = new ArrayList<>();
       boulders.add(r1);
       boulders.add(r2);
 
       when(boulderService.getClimbs()).thenReturn(boulders);
 
-      ArgumentCaptor<Set<Boulder>> argumentCaptor = ArgumentCaptor.forClass(Set.class);
+      ArgumentCaptor<List<Boulder>> argumentCaptor = ArgumentCaptor.forClass(List.class);
 
 
       String viewName = controller.listBoulders(model);
@@ -92,7 +92,7 @@ class BoulderControllerTest {
       assertEquals("climbs/boulders", viewName);
       verify(boulderService).getClimbs();
       verify(model).addAttribute(eq("boulders"), argumentCaptor.capture());
-      Set<Boulder> setInController = argumentCaptor.getValue();
+      List<Boulder> setInController = argumentCaptor.getValue();
       assertEquals(2, setInController.size());
    }
 

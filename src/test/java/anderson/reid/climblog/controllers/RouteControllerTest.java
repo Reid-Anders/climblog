@@ -76,13 +76,13 @@ class RouteControllerTest {
    void listRoutesTest() {
       Route r1 = Route.builder().id(1L).build();
       Route r2 = Route.builder().id(2L).build();
-      Set<Route> routes = new HashSet<>();
+      List<Route> routes = new ArrayList<>();
       routes.add(r1);
       routes.add(r2);
 
       when(routeService.getClimbs()).thenReturn(routes);
 
-      ArgumentCaptor<Set<Route>> argumentCaptor = ArgumentCaptor.forClass(Set.class);
+      ArgumentCaptor<List<Route>> argumentCaptor = ArgumentCaptor.forClass(List.class);
 
 
       String viewName = controller.listRoutes(model);
@@ -91,7 +91,7 @@ class RouteControllerTest {
       assertEquals("climbs/routes", viewName);
       verify(routeService).getClimbs();
       verify(model).addAttribute(eq("routes"), argumentCaptor.capture());
-      Set<Route> setInController = argumentCaptor.getValue();
+      List<Route> setInController = argumentCaptor.getValue();
       assertEquals(2, setInController.size());
    }
 

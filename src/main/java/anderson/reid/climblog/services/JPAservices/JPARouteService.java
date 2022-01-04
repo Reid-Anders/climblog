@@ -6,9 +6,7 @@ import anderson.reid.climblog.repositories.RouteRepository;
 import anderson.reid.climblog.services.ClimbService;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class JPARouteService implements ClimbService<Route> {
@@ -20,9 +18,10 @@ public class JPARouteService implements ClimbService<Route> {
    }
 
    @Override
-   public Set<Route> getClimbs() {
-      Set<Route> routes = new HashSet<>();
+   public List<Route> getClimbs() {
+      List<Route> routes = new ArrayList<>();
       routeRepository.findAll().iterator().forEachRemaining(routes::add);
+      Collections.sort(routes);
       return routes;
    }
 
