@@ -30,7 +30,9 @@
             <tr th:each="boulderSession : ${boulderSessions}">
                 <td th:text="${boulderSession.boulder.name}">Name</td>
                 <td th:text="${boulderSession.boulder.grade}">Grade</td>
-                <td th:text="${boulderSession.dateString()}">Date</td>
+                <td th:text="${#strings.substring(#temporals.monthName(boulderSession.date), 0, 3) +
+                            ' ' + #temporals.day(boulderSession.date) +
+                            ', ' + #temporals.year(boulderSession.date)}">Date</td>
                 <td th:text="${boulderSession.spotters}">Spotters</td>
                 <td th:text="${boulderSession.attempts}">15</td>
                 <td th:text="${boulderSession.type}">Type</td>

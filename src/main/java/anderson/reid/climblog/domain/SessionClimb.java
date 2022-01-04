@@ -27,9 +27,4 @@ public abstract class SessionClimb {
    @Lob
    @Column(name = "notes")
    protected String notes;
-
-   public String dateString() {
-      return this.date.getMonth().toString().substring(0, 3) + " " + this.date.getDayOfMonth() + ", " + this.date.getYear();
-   }
-
 }
