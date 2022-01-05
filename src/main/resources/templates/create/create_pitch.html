@@ -13,7 +13,7 @@
 <h1 class="text-center text-primary">Add Pitch</h1>
 
 <div class="mx-auto w-75">
-    <form th:object="${pitch}" th:action="@{/log/pitches/new_pitch/}" method="post">
+    <form th:object="${pitch}" th:action="@{/log/pitch/new_pitch/}" method="post">
         <input type="hidden" th:field="*{id}" />
         <select class="form-select mb-3" th:field="*{route}">
             <option value="5.10a" th:each="route : ${routes}" th:value="${route.id}" th:text="${route}">Tale of Two Guys, 5.13c</option>

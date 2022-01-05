@@ -3,6 +3,7 @@ package anderson.reid.climblog.controllers;
 import anderson.reid.climblog.domain.Grade;
 import anderson.reid.climblog.domain.Route;
 import anderson.reid.climblog.domain.YDSGrade;
+import anderson.reid.climblog.exceptions.EmptyListException;
 import anderson.reid.climblog.services.ClimbService;
 import anderson.reid.climblog.services.GradeService;
 import org.junit.jupiter.api.BeforeEach;
@@ -53,21 +54,21 @@ class RouteControllerTest {
    @Test
    void listRoutesMVCTest() throws Exception {
       //why does /climbs/routes/ work but not just /climbs/routes? it works in practice, but the test doesn't pass
-      mockMvc.perform(get("/climbs/routes/"))
+      mockMvc.perform(get("/climbs/route/"))
             .andExpect(status().isOk())
             .andExpect(view().name("climbs/routes"));
    }
 
    @Test
    void createRouteMVCTest() throws Exception {
-      mockMvc.perform(get("/climbs/routes/create"))
+      mockMvc.perform(get("/climbs/route/create"))
             .andExpect(status().isOk())
             .andExpect(view().name("create/create_route"));
    }
 
    @Test
    void saveOrUpdateRouteMVCTest() throws Exception {
-      mockMvc.perform(post("/climbs/routes/new_route"))
+      mockMvc.perform(post("/climbs/route/new_route"))
             .andExpect(status().is3xxRedirection())
             .andExpect(view().name("redirect:/climbs/routes"));
    }

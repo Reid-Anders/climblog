@@ -1,6 +1,7 @@
 package anderson.reid.climblog.services.JPAservices;
 
 import anderson.reid.climblog.domain.BoulderSession;
+import anderson.reid.climblog.exceptions.EmptyListException;
 import anderson.reid.climblog.repositories.BoulderSessionRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -39,5 +40,12 @@ class JPABoulderSessionServiceTest {
 
       verify(boulderSessionRepository).findAll();
       assertEquals(2, returnedSessions.size());
+   }
+
+   @Test
+   void testEmptyList() {
+      assertThrows(EmptyListException.class, () -> {
+         service.getSessionClimbs();
+      });
    }
 }

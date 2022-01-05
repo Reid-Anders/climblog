@@ -13,7 +13,7 @@
     <h1 class="text-center text-primary">Add Route</h1>
 
         <div class="mx-auto w-75">
-            <form th:object="${route}" th:action="@{/climbs/routes/new_route/}" method="post">
+            <form th:object="${route}" th:action="@{/climbs/route/new_route/}" method="post">
                 <input type="hidden" th:field="*{id}" />
                 <div class="form-floating mb-3 mt-3">
                     <input type="text" class="form-control" id="name" placeholder="Name" name="name" th:field="*{name}" required>

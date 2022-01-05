@@ -2,7 +2,9 @@ package anderson.reid.climblog.services.JPAservices;
 
 import anderson.reid.climblog.domain.Route;
 import anderson.reid.climblog.domain.YDSGrade;
+import anderson.reid.climblog.exceptions.EmptyListException;
 import anderson.reid.climblog.repositories.RouteRepository;
+import net.bytebuddy.pool.TypePool;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -49,5 +51,13 @@ class JPARouteServiceTest {
       assertNotNull(returnedRoute);
       assertEquals(2L, returnedRoute.getId());
       assertEquals("Pressure Test", returnedRoute.getName());
+   }
+
+
+   @Test
+   void testEmptyList() {
+      assertThrows(EmptyListException.class, () -> {
+         routeService.getClimbs();
+      });
    }
 }

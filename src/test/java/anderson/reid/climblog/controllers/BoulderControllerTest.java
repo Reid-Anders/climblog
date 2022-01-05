@@ -54,21 +54,21 @@ class BoulderControllerTest {
    @Test
    void listBouldersMVCTest() throws Exception {
       //why does /climbs/routes/ work but not just /climbs/routes? it works in practice, but the test doesn't pass
-      mockMvc.perform(get("/climbs/boulders/"))
+      mockMvc.perform(get("/climbs/boulder/"))
             .andExpect(status().isOk())
             .andExpect(view().name("climbs/boulders"));
    }
 
    @Test
    void createBoulderMVCTest() throws Exception {
-      mockMvc.perform(get("/climbs/boulders/create"))
+      mockMvc.perform(get("/climbs/boulder/create"))
             .andExpect(status().isOk())
             .andExpect(view().name("create/create_boulder"));
    }
 
    @Test
    void saveOrUpdateBoulderMVCTest() throws Exception {
-      mockMvc.perform(post("/climbs/boulders/new_boulder"))
+      mockMvc.perform(post("/climbs/boulder/new_boulder"))
             .andExpect(status().is3xxRedirection())
             .andExpect(view().name("redirect:/climbs/boulders"));
    }

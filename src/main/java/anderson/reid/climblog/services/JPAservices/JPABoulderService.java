@@ -1,6 +1,7 @@
 package anderson.reid.climblog.services.JPAservices;
 
 import anderson.reid.climblog.domain.Boulder;
+import anderson.reid.climblog.exceptions.EmptyListException;
 import anderson.reid.climblog.repositories.BoulderRepository;
 import anderson.reid.climblog.services.ClimbService;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,11 @@ public class JPABoulderService implements ClimbService<Boulder> {
    public List<Boulder> getClimbs() {
       List<Boulder> boulders = new ArrayList<>();
       boulderRepository.findAll().iterator().forEachRemaining(boulders::add);
+
+      if(boulders.isEmpty()) {
+         throw new EmptyListException("-- No boulders found! --", "Boulders", "/climbs/boulder");
+      }
+
       Collections.sort(boulders);
       return boulders;
    }

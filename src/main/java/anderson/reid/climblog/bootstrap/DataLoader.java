@@ -116,7 +116,7 @@ public class DataLoader implements CommandLineRunner {
       gradeRepository.save(v14);
       gradeRepository.save(v15);
 
-      Route r1 = Route.builder()
+/*      Route r1 = Route.builder()
             .name("Air Test")
             .sector("Doctor's Wall")
             .area("Skaha Bluffs")
@@ -145,9 +145,9 @@ public class DataLoader implements CommandLineRunner {
 
       routeRepository.save(r1);
       routeRepository.save(r2);
-      routeRepository.save(r3);
+      routeRepository.save(r3);*/
 
-      Boulder b1 = Boulder.builder()
+      /*Boulder b1 = Boulder.builder()
             .name("Baby Cthulhu")
             .sector("Burning Man")
             .area("Boulderfields")
@@ -164,8 +164,9 @@ public class DataLoader implements CommandLineRunner {
             .build();
 
       boulderRepository.save(b1);
-      boulderRepository.save(b2);
+      boulderRepository.save(b2);*/
 
+/*
       Pitch p1 = Pitch.builder()
             .route(r1)
             .date(LocalDate.now())
@@ -193,8 +194,9 @@ public class DataLoader implements CommandLineRunner {
       pitchRepository.save(p1);
       pitchRepository.save(p2);
       pitchRepository.save(p3);
+*/
 
-      BoulderSession bs1 = BoulderSession.builder()
+      /*BoulderSession bs1 = BoulderSession.builder()
             .boulder(b1)
             .date(LocalDate.now())
             .attempts(15)
@@ -213,6 +215,6 @@ public class DataLoader implements CommandLineRunner {
             .build();
 
       boulderSessionRepository.save(bs1);
-      boulderSessionRepository.save(bs2);
+      boulderSessionRepository.save(bs2);*/
    }
 }

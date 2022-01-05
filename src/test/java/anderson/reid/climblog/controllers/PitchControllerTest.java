@@ -49,14 +49,14 @@ class PitchControllerTest {
 
    @Test
    void listPitchesMVCTest() throws Exception {
-      mockMvc.perform(get("/log/pitches/"))
+      mockMvc.perform(get("/log/pitch/"))
             .andExpect(status().isOk())
             .andExpect(view().name("log/pitches"));
    }
 
    @Test
    void createPitchMVCTest() throws Exception {
-      mockMvc.perform(get("/log/pitches/create"))
+      mockMvc.perform(get("/log/pitch/create"))
             .andExpect(status().isOk())
             .andExpect(view().name("create/create_pitch"));
    }

@@ -44,7 +44,7 @@ class BoulderSessionControllerTest {
 
    @Test
    void listBoulderSessionMVCTest() throws Exception {
-      mockMvc.perform(get("/log/bouldersessions"))
+      mockMvc.perform(get("/log/bouldersession"))
             .andExpect(status().isOk())
             .andExpect(view().name("log/bouldersessions"));
    }

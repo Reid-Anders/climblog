@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::body})">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Routes</title>
+
+        <link rel="stylesheet" href="../../static/resources/css/bootstrap.min.css">
+        <script src="../../static/resources/js/bootstrap.min.js"></script>
+    </head>
+
+    <body>
+
+    <div class="d-flex justify-content-between">
+        <h1 class="text-left text-primary" th:text="${exception.typeName}">TypeName</h1>
+        <a class="text-right btn btn-primary m-2" href="#" th:href="@{${exception.pathName} + '/create'}">Add
+                    <span th:text="${exception.typeName}">typeName</span></a>
+    </div>
+
+    <p class="text-center text-warning" th:text="${exception.getMessage()}"></p>
+    <p class="text-center text-primary">Use the 'Add <span th:text="${exception.typeName}">typeName</span>' button to add some!</p>
+
+    </body>
+</html>

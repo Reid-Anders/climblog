@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@RequestMapping("/climbs/boulders")
+@RequestMapping("/climbs/boulder")
 @Controller
 public class BoulderController {
 
