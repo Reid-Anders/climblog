@@ -40,6 +40,6 @@ public class PitchController {
    @PostMapping("/new_pitch")
    public String saveOrUpdatePitch(@ModelAttribute Pitch pitch) {
       pitchService.save(pitch);
-      return "redirect:/log/pitches";
+      return "redirect:/log/pitch";
    }
 }

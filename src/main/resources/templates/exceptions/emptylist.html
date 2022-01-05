@@ -11,9 +11,9 @@
 
     <body>
 
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between mb-2">
         <h1 class="text-left text-primary" th:text="${exception.typeName}">TypeName</h1>
-        <a class="text-right btn btn-primary m-2" href="#" th:href="@{${exception.pathName} + '/create'}">Add
+        <a class="btn btn-lg btn-primary m-2" href="#" th:href="@{${exception.pathName} + '/create'}">Add
                     <span th:text="${exception.typeName}">typeName</span></a>
     </div>
 

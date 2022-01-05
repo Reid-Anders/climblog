@@ -38,6 +38,6 @@ public class RouteController {
    @PostMapping("/new_route")
    public String saveOrUpdateRoute(@ModelAttribute Route route) {
       routeService.save(route);
-      return "redirect:/climbs/routes";
+      return "redirect:/climbs/route";
    }
 }

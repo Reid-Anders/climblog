@@ -40,7 +40,7 @@ class ExceptionControllerTest {
 
    @Test
    void handleEmptyList() {
-      String viewName = controller.handleEmptyList(model, new EmptyListException("test"));
+      String viewName = controller.handleEmptyList(model, new EmptyListException());
 
       verify(model).addAttribute(eq("exception"), any(EmptyListException.class));
       assertEquals("exceptions/emptylist", viewName);

@@ -39,6 +39,6 @@ public class BoulderController {
    @PostMapping("/new_boulder")
    public String saveOrUpdateBoulder(@ModelAttribute Boulder boulder) {
       boulderService.save(boulder);
-      return "redirect:/climbs/boulders";
+      return "redirect:/climbs/boulder";
    }
 }

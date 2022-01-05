@@ -12,15 +12,6 @@ public class EmptyListException extends RuntimeException {
       super("Empty list");
    }
 
-   public EmptyListException(String message) {
-      super(message);
-   }
-
-   public EmptyListException(String message, String typeName) {
-      super(message);
-      this.typeName = typeName;
-   }
-
    public EmptyListException(String message, String typeName, String pathName) {
       super(message);
       this.typeName = typeName;
