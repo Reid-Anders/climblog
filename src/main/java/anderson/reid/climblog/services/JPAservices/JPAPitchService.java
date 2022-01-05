@@ -8,6 +8,7 @@ import anderson.reid.climblog.services.SessionClimbService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -30,13 +31,15 @@ public class JPAPitchService implements SessionClimbService<Pitch> {
          throw new EmptyListException("-- No pitches found! --", "Pitches", "/log/pitch");
       }
 
+      Collections.sort(pitches);
+
       return pitches;
    }
 
    @Override
    public Pitch save(Pitch sessionClimb) {
-      sessionClimb.getRoute().updateStatus(sessionClimb.getType());
-      routeRepository.save(sessionClimb.getRoute());
+      sessionClimb.getClimb().updateStatus(sessionClimb.getType());
+      routeRepository.save(sessionClimb.getClimb());
       return pitchRepository.save(sessionClimb);
    }
 }

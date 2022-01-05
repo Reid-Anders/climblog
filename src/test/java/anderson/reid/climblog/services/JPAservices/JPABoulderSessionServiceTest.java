@@ -10,6 +10,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,8 +30,8 @@ class JPABoulderSessionServiceTest {
 
    @Test
    void getSessionClimbsTest() {
-      BoulderSession bs1 = BoulderSession.builder().id(1L).build();
-      BoulderSession bs2 = BoulderSession.builder().id(2L).build();
+      BoulderSession bs1 = BoulderSession.builder().id(1L).date(LocalDate.now()).build();
+      BoulderSession bs2 = BoulderSession.builder().id(2L).date(LocalDate.now()).build();
       List<BoulderSession> boulderSessions = new ArrayList<>();
       boulderSessions.add(bs1);
       boulderSessions.add(bs2);

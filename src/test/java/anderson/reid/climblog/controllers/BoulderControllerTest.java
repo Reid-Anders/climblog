@@ -70,7 +70,7 @@ class BoulderControllerTest {
    void saveOrUpdateBoulderMVCTest() throws Exception {
       mockMvc.perform(post("/climbs/boulder/new_boulder"))
             .andExpect(status().is3xxRedirection())
-            .andExpect(view().name("redirect:/climbs/boulders"));
+            .andExpect(view().name("redirect:/climbs/boulder"));
    }
 
    @Test
@@ -119,7 +119,7 @@ class BoulderControllerTest {
    }
 
    @Test
-   void saveNewRouteTest() {
+   void saveNewBoulderTest() {
       //given
       Boulder boulder = Boulder.builder().id(1L).build();
 
@@ -128,6 +128,6 @@ class BoulderControllerTest {
       String viewName = controller.saveOrUpdateBoulder(new Boulder());
 
       //then
-      assertEquals("redirect:/climbs/boulders", viewName);
+      assertEquals("redirect:/climbs/boulder", viewName);
    }
 }

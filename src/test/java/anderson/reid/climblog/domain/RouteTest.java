@@ -15,7 +15,7 @@ class RouteTest {
    final static String NAME = "Air Test";
    final static String SECTOR = "Doctor's Wall";
    final static String AREA = "Skaha Bluffs";
-   final static Grade GRADE = new YDSGrade("5.13a");
+   final static YDSGrade GRADE = new YDSGrade("5.13a");
    final static char STATUS = 'R';
    final static Integer LENGTH = 30;
 

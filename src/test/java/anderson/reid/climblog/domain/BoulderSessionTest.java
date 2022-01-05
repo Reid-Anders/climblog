@@ -4,6 +4,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,7 +29,7 @@ class BoulderSessionTest {
    @BeforeEach
    void setUp() {
       boulderSession = BoulderSession.builder()
-            .boulder(BOULDER)
+            .climb(BOULDER)
             .attempts(ATTEMPTS)
             .spotters(SPOTTERS)
             .date(DATE)
@@ -37,11 +40,34 @@ class BoulderSessionTest {
 
    @Test
    void testBoulderSession() {
-      assertEquals(BOULDER, boulderSession.getBoulder());
+      assertEquals(BOULDER, boulderSession.getClimb());
       assertEquals(ATTEMPTS, boulderSession.getAttempts());
       assertEquals(SPOTTERS, boulderSession.getSpotters());
       assertEquals(DATE, boulderSession.getDate());
       assertEquals(TYPE, boulderSession.getType());
       assertEquals(NOTES, boulderSession.getNotes());
+   }
+
+   @Test
+   void testSortPitches() {
+      BoulderSession bs1 = BoulderSession.builder()
+            .climb(Boulder.builder().id(1L).grade(new VGrade("V0")).build())
+            .date(LocalDate.MIN)
+            .build();
+
+      BoulderSession bs2 = BoulderSession.builder()
+            .climb(Boulder.builder().id(2L).grade(new VGrade("V10")).build())
+            .date(LocalDate.MAX)
+            .build();
+
+      List<BoulderSession> boulderList = new ArrayList<>();
+      boulderList.add(bs2);
+      boulderList.add(boulderSession);
+      boulderList.add(bs1);
+
+      Collections.sort(boulderList);
+
+      assertEquals("[null, V10 on " + LocalDate.MAX + ", Baby Cthulhu, V7 on " + LocalDate.now() +
+            ", null, V0 on " + LocalDate.MIN + "]", boulderList.toString());
    }
 }

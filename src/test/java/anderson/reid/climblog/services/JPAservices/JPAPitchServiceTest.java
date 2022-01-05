@@ -13,6 +13,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.stubbing.OngoingStubbing;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,8 +37,8 @@ class JPAPitchServiceTest {
    @Test
    void getSessionClimbsTest() {
       //given
-      Pitch p1 = Pitch.builder().id(1L).build();
-      Pitch p2 = Pitch.builder().id(2L).build();
+      Pitch p1 = Pitch.builder().id(1L).date(LocalDate.now()).build();
+      Pitch p2 = Pitch.builder().id(2L).date(LocalDate.now()).build();
       List<Pitch> pitches = new ArrayList<>();
       pitches.add(p1);
       pitches.add(p2);

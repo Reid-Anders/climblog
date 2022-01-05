@@ -9,8 +9,8 @@ import javax.persistence.Table;
 
 @Getter
 @Setter
-@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "routes")
 public class Route extends Climb {
@@ -19,7 +19,7 @@ public class Route extends Climb {
    private Integer length;
 
    @Builder
-   public Route(Long id, String name, String sector, String area, Grade grade, char status, Integer length) {
+   public Route(Long id, String name, String sector, String area, YDSGrade grade, char status, Integer length) {
       super(id, name, sector, area, grade, status);
       this.length = length;
    }

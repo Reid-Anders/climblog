@@ -27,8 +27,8 @@
                 <th>Edit</th>
             </thead>
             <tr th:each="pitch : ${pitches}">
-                <td th:text="${pitch.route.name}">Name</td>
-                <td th:text="${pitch.route.grade}">Grade</td>
+                <td th:text="${pitch.climb.name}">Name</td>
+                <td th:text="${pitch.climb.grade}">Grade</td>
                 <td th:text="${#strings.substring(#temporals.monthName(pitch.date), 0, 3) +
                                 ' ' + #temporals.day(pitch.date) +
                                 ', ' + #temporals.year(pitch.date)}">Date</td>

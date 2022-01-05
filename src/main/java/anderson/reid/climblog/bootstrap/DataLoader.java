@@ -171,7 +171,7 @@ public class DataLoader implements CommandLineRunner {
       boulderRepository.save(b2);
 
       Pitch p1 = Pitch.builder()
-            .route(r1)
+            .climb(r1)
             .date(LocalDate.now())
             .partner("Landon Orr")
             .type('R')
@@ -179,7 +179,7 @@ public class DataLoader implements CommandLineRunner {
             .build();
 
       Pitch p2 = Pitch.builder()
-            .route(r2)
+            .climb(r2)
             .date(LocalDate.now())
             .partner("Val Day")
             .type('C')
@@ -187,7 +187,7 @@ public class DataLoader implements CommandLineRunner {
             .build();
 
       Pitch p3 = Pitch.builder()
-            .route(r3)
+            .climb(r3)
             .date(LocalDate.now())
             .partner("Dan Ek")
             .type('F')
@@ -199,7 +199,7 @@ public class DataLoader implements CommandLineRunner {
       pitchRepository.save(p3);
 
       BoulderSession bs1 = BoulderSession.builder()
-            .boulder(b1)
+            .climb(b1)
             .date(LocalDate.now())
             .attempts(15)
             .type('R')
@@ -208,7 +208,7 @@ public class DataLoader implements CommandLineRunner {
             .build();
 
       BoulderSession bs2 = BoulderSession.builder()
-            .boulder(b2)
+            .climb(b2)
             .date(LocalDate.now())
             .attempts(11)
             .type('C')

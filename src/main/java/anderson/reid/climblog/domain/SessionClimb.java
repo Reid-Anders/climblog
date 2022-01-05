@@ -1,22 +1,19 @@
 package anderson.reid.climblog.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @MappedSuperclass
-public abstract class SessionClimb {
+public abstract class SessionClimb<T extends Climb> extends BaseEntity implements Comparable<SessionClimb<T>> {
 
-   @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
-   protected Long id;
+   @ManyToOne
+   @JoinColumn(name = "climb_id")
+   protected T climb;
 
    @Column(name = "date")
    protected LocalDate date;
@@ -27,4 +24,22 @@ public abstract class SessionClimb {
    @Lob
    @Column(name = "notes")
    protected String notes;
+
+   public SessionClimb(Long id, T climb, LocalDate date, char type, String notes) {
+      super(id);
+      this.climb = climb;
+      this.date = date;
+      this.type = type;
+      this.notes = notes;
+   }
+
+   @Override
+   public int compareTo(SessionClimb<T> sessionClimb) {
+      return this.date.compareTo(sessionClimb.date) * -1;
+   }
+
+   @Override
+   public String toString() {
+      return this.climb + " on " + this.date;
+   }
 }

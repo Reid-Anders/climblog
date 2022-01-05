@@ -1,20 +1,14 @@
 package anderson.reid.climblog.domain;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
-@Data
-@AllArgsConstructor
+@Getter
+@Setter
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 @MappedSuperclass
-public abstract class Climb implements Comparable<Climb> {
-
-   @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
-   protected Long id;
+public abstract class Climb extends BaseEntity implements Comparable<Climb> {
 
    @Column(name = "name")
    protected String name;
@@ -31,6 +25,15 @@ public abstract class Climb implements Comparable<Climb> {
 
    @Column(name = "status")
    protected char status;
+
+   public Climb(Long id, String name, String sector, String area, Grade grade, char status) {
+      super(id);
+      this.name = name;
+      this.sector = sector;
+      this.area = area;
+      this.grade = grade;
+      this.status = status;
+   }
 
    @Override
    public String toString() {

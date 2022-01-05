@@ -70,7 +70,7 @@ class RouteControllerTest {
    void saveOrUpdateRouteMVCTest() throws Exception {
       mockMvc.perform(post("/climbs/route/new_route"))
             .andExpect(status().is3xxRedirection())
-            .andExpect(view().name("redirect:/climbs/routes"));
+            .andExpect(view().name("redirect:/climbs/route"));
    }
 
    @Test
@@ -128,6 +128,6 @@ class RouteControllerTest {
       String viewName = controller.saveOrUpdateRoute(new Route());
 
       //then
-      assertEquals("redirect:/climbs/routes", viewName);
+      assertEquals("redirect:/climbs/route", viewName);
    }
 }

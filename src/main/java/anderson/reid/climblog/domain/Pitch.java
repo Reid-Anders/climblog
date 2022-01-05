@@ -7,24 +7,20 @@ import org.thymeleaf.util.StringUtils;
 import javax.persistence.*;
 import java.time.LocalDate;
 
-@Data
-@EqualsAndHashCode(callSuper = true)
+@Getter
+@Setter
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "pitches")
-public class Pitch extends SessionClimb {
-
-   @ManyToOne
-   @JoinColumn(name = "route_id")
-   private Route route;
+public class Pitch extends SessionClimb<Route> {
 
    @Column(name = "partner")
    private String partner;
 
    @Builder
-   public Pitch(Long id, LocalDate date, char type, String notes, Route route, String partner) {
-      super(id, date, type, notes);
-      this.route = route;
+   public Pitch(Long id, Route climb, LocalDate date, char type, String notes, String partner) {
+      super(id, climb, date, type, notes);
       this.partner = partner;
    }
 }
