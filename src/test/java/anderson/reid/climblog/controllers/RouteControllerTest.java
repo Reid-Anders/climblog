@@ -127,4 +127,15 @@ class RouteControllerTest {
       //then
       assertEquals("redirect:/climbs/route", viewName);
    }
+
+   @Test
+   void editRouteTest() throws Exception {
+      Route route = Route.builder().id(1L).build();
+
+      when(routeService.findClimbById(anyLong())).thenReturn(route);
+
+      mockMvc.perform(get("/climbs/route/1/edit"))
+            .andExpect(status().isOk())
+            .andExpect(view().name("create/create_route"));
+   }
 }

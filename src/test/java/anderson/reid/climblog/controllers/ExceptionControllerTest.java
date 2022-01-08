@@ -1,6 +1,7 @@
 package anderson.reid.climblog.controllers;
 
 import anderson.reid.climblog.exceptions.EmptyListException;
+import anderson.reid.climblog.exceptions.EntityNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -39,10 +40,18 @@ class ExceptionControllerTest {
    }
 
    @Test
-   void handleEmptyList() {
+   void handleEmptyListTest() {
       String viewName = controller.handleEmptyList(model, new EmptyListException());
 
       verify(model).addAttribute(eq("exception"), any(EmptyListException.class));
       assertEquals("exceptions/emptylist", viewName);
+   }
+
+   @Test
+   void handleEntityNotFoundTest() {
+      String viewName = controller.handleEntityNotFound(model, new EntityNotFoundException());
+
+      verify(model).addAttribute(eq("exception"), any(EntityNotFoundException.class));
+      assertEquals("exceptions/entity_not_found", viewName);
    }
 }

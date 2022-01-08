@@ -30,7 +30,7 @@
                 <td th:text="${boulder.area}">Boulderfields</td>
                 <td th:text="${boulder.grade}">V7</td>
                 <td th:text="${boulder.status}">R</td>
-                <td><a href="#" class="link-primary">Edit</a></td>
+                <td><a href="#" th:href="@{'/climbs/boulder/' + ${boulder.id} + '/edit'}" class="link-primary">Edit</a></td>
             </tr>
             <tr th:remove="all">
                 <td>Dangleberries</td>

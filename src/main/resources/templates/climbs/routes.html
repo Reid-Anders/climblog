@@ -31,7 +31,7 @@
                 <td th:text="${route.grade}">5.13a</td>
                 <td th:text="${route.status}">R</td>
                 <td th:text="${route.length} + 'm'">40m</td>
-                <td><a href="#" class="link-primary">Edit</a></td>
+                <td><a href="#" th:href="@{'/climbs/route/' + ${route.id} + '/edit'}" class="link-primary">Edit</a></td>
             </tr>
             <tr th:remove="all">
                 <td>Pressure Test</td>

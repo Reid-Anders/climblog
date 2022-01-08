@@ -1,6 +1,7 @@
 package anderson.reid.climblog.controllers;
 
 import anderson.reid.climblog.domain.climb.Boulder;
+import anderson.reid.climblog.domain.climb.Route;
 import anderson.reid.climblog.domain.grade.Grade;
 import anderson.reid.climblog.domain.grade.VGrade;
 import anderson.reid.climblog.services.ClimbService;
@@ -126,5 +127,16 @@ class BoulderControllerTest {
 
       //then
       assertEquals("redirect:/climbs/boulder", viewName);
+   }
+
+   @Test
+   void editBoulderTest() throws Exception {
+      Boulder boulder = Boulder.builder().id(1L).build();
+
+      when(boulderService.findClimbById(anyLong())).thenReturn(boulder);
+
+      mockMvc.perform(get("/climbs/boulder/1/edit"))
+            .andExpect(status().isOk())
+            .andExpect(view().name("create/create_boulder"));
    }
 }

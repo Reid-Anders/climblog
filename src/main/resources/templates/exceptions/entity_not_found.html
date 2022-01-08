@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::body})">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Routes</title>
+
+        <link rel="stylesheet" href="../../static/resources/css/bootstrap.min.css">
+        <script src="../../static/resources/js/bootstrap.min.js"></script>
+    </head>
+
+    <body>
+
+    <h1 class="text-center text-primary"><span th:text="${exception.entityName}">Entity</span> Not Found</h1>
+    <p class="text-center text-warning"><span th:text="${#strings.toUpperCase(exception.getMessage())}">message</span></p>
+    </body>
+</html>
