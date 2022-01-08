@@ -1,6 +1,8 @@
 package anderson.reid.climblog.controllers;
 
-import anderson.reid.climblog.domain.BoulderSession;
+import anderson.reid.climblog.domain.climb.Boulder;
+import anderson.reid.climblog.domain.sessionclimb.BoulderSession;
+import anderson.reid.climblog.services.ClimbService;
 import anderson.reid.climblog.services.SessionClimbService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,7 +10,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -30,6 +31,9 @@ class BoulderSessionControllerTest {
    SessionClimbService<BoulderSession> boulderSessionService;
 
    @Mock
+   ClimbService<Boulder> boulderService;
+
+   @Mock
    Model model;
 
    @InjectMocks
@@ -47,6 +51,20 @@ class BoulderSessionControllerTest {
       mockMvc.perform(get("/log/bouldersession"))
             .andExpect(status().isOk())
             .andExpect(view().name("log/bouldersessions"));
+   }
+
+   @Test
+   void createBoulderSessionMVCTest() throws Exception {
+      mockMvc.perform(get("/log/bouldersession/create"))
+            .andExpect(status().isOk())
+            .andExpect(view().name("create/create_bouldersession"));
+   }
+
+   @Test
+   void saveOrUpdateBoulderSessionMVCTest() throws Exception {
+      mockMvc.perform(get("/log/bouldersession/new_bouldersession"))
+            .andExpect(status().is3xxRedirection())
+            .andExpect(view().name("redirect:/log/bouldersession"));
    }
 
    @Test

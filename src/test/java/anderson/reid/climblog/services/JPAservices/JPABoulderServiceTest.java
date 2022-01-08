@@ -1,11 +1,9 @@
 package anderson.reid.climblog.services.JPAservices;
 
-import anderson.reid.climblog.domain.Boulder;
-import anderson.reid.climblog.domain.Route;
-import anderson.reid.climblog.domain.VGrade;
+import anderson.reid.climblog.domain.climb.Boulder;
+import anderson.reid.climblog.domain.grade.VGrade;
 import anderson.reid.climblog.exceptions.EmptyListException;
 import anderson.reid.climblog.repositories.BoulderRepository;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

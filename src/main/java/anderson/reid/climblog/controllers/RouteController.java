@@ -1,7 +1,7 @@
 package anderson.reid.climblog.controllers;
 
-import anderson.reid.climblog.domain.Route;
-import anderson.reid.climblog.domain.YDSGrade;
+import anderson.reid.climblog.domain.climb.Route;
+import anderson.reid.climblog.domain.grade.YDSGrade;
 import anderson.reid.climblog.services.ClimbService;
 import anderson.reid.climblog.services.GradeService;
 import org.springframework.stereotype.Controller;

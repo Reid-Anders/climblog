@@ -1,6 +1,11 @@
 package anderson.reid.climblog.bootstrap;
 
-import anderson.reid.climblog.domain.*;
+import anderson.reid.climblog.domain.climb.Boulder;
+import anderson.reid.climblog.domain.climb.Route;
+import anderson.reid.climblog.domain.grade.VGrade;
+import anderson.reid.climblog.domain.grade.YDSGrade;
+import anderson.reid.climblog.domain.sessionclimb.BoulderSession;
+import anderson.reid.climblog.domain.sessionclimb.Pitch;
 import anderson.reid.climblog.repositories.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

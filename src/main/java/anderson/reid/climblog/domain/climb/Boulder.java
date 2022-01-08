@@ -1,5 +1,6 @@
-package anderson.reid.climblog.domain;
+package anderson.reid.climblog.domain.climb;
 
+import anderson.reid.climblog.domain.grade.VGrade;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -8,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "boulders")
 public class Boulder extends Climb {

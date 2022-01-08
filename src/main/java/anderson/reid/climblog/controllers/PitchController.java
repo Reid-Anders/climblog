@@ -1,7 +1,7 @@
 package anderson.reid.climblog.controllers;
 
-import anderson.reid.climblog.domain.Pitch;
-import anderson.reid.climblog.domain.Route;
+import anderson.reid.climblog.domain.sessionclimb.Pitch;
+import anderson.reid.climblog.domain.climb.Route;
 import anderson.reid.climblog.services.ClimbService;
 import anderson.reid.climblog.services.SessionClimbService;
 import org.springframework.stereotype.Controller;
@@ -36,7 +36,6 @@ public class PitchController {
       return "create/create_pitch";
    }
 
-   //todo: write tests for this before committal
    @PostMapping("/new_pitch")
    public String saveOrUpdatePitch(@ModelAttribute Pitch pitch) {
       pitchService.save(pitch);

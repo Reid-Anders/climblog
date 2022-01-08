@@ -1,7 +1,7 @@
-package anderson.reid.climblog.domain;
+package anderson.reid.climblog.domain.climb;
 
+import anderson.reid.climblog.domain.grade.YDSGrade;
 import lombok.*;
-import org.springframework.stereotype.Service;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +10,6 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "routes")
 public class Route extends Climb {
@@ -22,5 +21,18 @@ public class Route extends Climb {
    public Route(Long id, String name, String sector, String area, YDSGrade grade, char status, Integer length) {
       super(id, name, sector, area, grade, status);
       this.length = length;
+   }
+
+   @Override
+   public boolean equals(Object o) {
+      Route rhs;
+
+      if(!(o instanceof Route)) {
+         return false;
+      } else {
+         rhs = (Route) o;
+      }
+
+      return this.length.equals(rhs.length) && super.equals(rhs);
    }
 }

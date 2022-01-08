@@ -1,15 +1,15 @@
-package anderson.reid.climblog.domain;
+package anderson.reid.climblog.domain.grade;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.boot.CommandLineRunner;
+import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "grades")
 public abstract class Grade implements Comparable<Grade> {
@@ -24,6 +24,19 @@ public abstract class Grade implements Comparable<Grade> {
    @Override
    public String toString() {
       return this.prefix + this.suffix;
+   }
+
+   @Override
+   public boolean equals(Object o) {
+      Grade rhs;
+
+      if(!(o instanceof Grade)) {
+         return false;
+      } else {
+         rhs = (Grade) o;
+      }
+
+      return this.toString().equals(rhs.toString());
    }
 
    public abstract void increment();

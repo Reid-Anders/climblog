@@ -1,13 +1,12 @@
 package anderson.reid.climblog.services.JPAservices;
 
-import anderson.reid.climblog.domain.BoulderSession;
+import anderson.reid.climblog.domain.sessionclimb.BoulderSession;
 import anderson.reid.climblog.exceptions.EmptyListException;
 import anderson.reid.climblog.repositories.BoulderSessionRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
@@ -15,9 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.*;
 
 @ExtendWith(MockitoExtension.class)
 class JPABoulderSessionServiceTest {
@@ -48,5 +47,16 @@ class JPABoulderSessionServiceTest {
       assertThrows(EmptyListException.class, () -> {
          service.getSessionClimbs();
       });
+   }
+
+   @Test
+   void testSaveBoulderSession() {
+      BoulderSession bs1 = BoulderSession.builder().id(1L).build();
+
+      when(boulderSessionRepository.save(any(BoulderSession.class))).thenReturn(bs1);
+      BoulderSession savedBoulderSession = service.save(new BoulderSession());
+
+      verify(boulderSessionRepository).save(any(BoulderSession.class));
+      assertEquals(1L, savedBoulderSession.getId());
    }
 }

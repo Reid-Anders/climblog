@@ -1,12 +1,11 @@
 package anderson.reid.climblog.services.JPAservices;
 
-import anderson.reid.climblog.domain.Grade;
-import anderson.reid.climblog.domain.VGrade;
-import anderson.reid.climblog.domain.YDSGrade;
+import anderson.reid.climblog.domain.grade.Grade;
+import anderson.reid.climblog.domain.grade.VGrade;
+import anderson.reid.climblog.domain.grade.YDSGrade;
 import anderson.reid.climblog.repositories.GradeRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -15,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 

@@ -1,5 +1,7 @@
 package anderson.reid.climblog.domain;
 
+import anderson.reid.climblog.domain.grade.Grade;
+import anderson.reid.climblog.domain.grade.YDSGrade;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

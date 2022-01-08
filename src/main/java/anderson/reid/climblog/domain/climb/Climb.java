@@ -1,4 +1,6 @@
-package anderson.reid.climblog.domain;
+package anderson.reid.climblog.domain.climb;
+import anderson.reid.climblog.domain.BaseEntity;
+import anderson.reid.climblog.domain.grade.Grade;
 import lombok.*;
 
 import javax.persistence.*;
@@ -6,7 +8,6 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
 @MappedSuperclass
 public abstract class Climb extends BaseEntity implements Comparable<Climb> {
 
@@ -43,6 +44,24 @@ public abstract class Climb extends BaseEntity implements Comparable<Climb> {
    @Override
    public int compareTo(Climb o) {
       return this.grade.equals(o.grade) ? this.name.compareTo(o.name) : this.grade.compareTo(o.grade);
+   }
+
+   @Override
+   public boolean equals(Object o) {
+      Climb rhs;
+
+      if(!(o instanceof Climb)) {
+         return false;
+      } else {
+         rhs = (Climb) o;
+      }
+
+      return this.id.equals(rhs.id) &&
+            this.name.equals(rhs.name) &&
+            this.sector.equals(rhs.sector) &&
+            this.area.equals(rhs.area) &&
+            this.grade.equals(rhs.grade) &&
+            this.status == rhs.status;
    }
 
    public void updateStatus(char type) {

@@ -1,6 +1,6 @@
 package anderson.reid.climblog.services.JPAservices;
 
-import anderson.reid.climblog.domain.Pitch;
+import anderson.reid.climblog.domain.sessionclimb.Pitch;
 import anderson.reid.climblog.exceptions.EmptyListException;
 import anderson.reid.climblog.repositories.PitchRepository;
 import anderson.reid.climblog.repositories.RouteRepository;

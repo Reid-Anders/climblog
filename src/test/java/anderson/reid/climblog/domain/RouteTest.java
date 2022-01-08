@@ -1,10 +1,11 @@
 package anderson.reid.climblog.domain;
 
+import anderson.reid.climblog.domain.climb.Route;
+import anderson.reid.climblog.domain.grade.YDSGrade;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 

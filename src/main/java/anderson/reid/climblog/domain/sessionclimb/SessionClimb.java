@@ -1,5 +1,8 @@
-package anderson.reid.climblog.domain;
+package anderson.reid.climblog.domain.sessionclimb;
 
+import anderson.reid.climblog.domain.BaseEntity;
+import anderson.reid.climblog.domain.climb.Climb;
+import anderson.reid.climblog.services.SessionClimbService;
 import lombok.*;
 
 import javax.persistence.*;
@@ -41,5 +44,22 @@ public abstract class SessionClimb<T extends Climb> extends BaseEntity implement
    @Override
    public String toString() {
       return this.climb + " on " + this.date;
+   }
+
+   @Override
+   public boolean equals(Object o) {
+      SessionClimb<T> rhs;
+
+      if(!(o instanceof SessionClimbService)) {
+         return false;
+      } else {
+         rhs = (SessionClimb<T>) o;
+      }
+
+      return this.id.equals(rhs.id) &&
+            this.climb.equals(rhs.climb) &&
+            this.date.equals(rhs.date) &&
+            this.type == rhs.type &&
+            this.notes.equals(rhs.notes);
    }
 }

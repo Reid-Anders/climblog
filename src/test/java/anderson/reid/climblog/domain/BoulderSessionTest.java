@@ -1,5 +1,8 @@
 package anderson.reid.climblog.domain;
 
+import anderson.reid.climblog.domain.climb.Boulder;
+import anderson.reid.climblog.domain.grade.VGrade;
+import anderson.reid.climblog.domain.sessionclimb.BoulderSession;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

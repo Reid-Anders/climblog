@@ -1,9 +1,8 @@
 package anderson.reid.climblog.services;
 
-import anderson.reid.climblog.domain.Grade;
+import anderson.reid.climblog.domain.grade.Grade;
 
 import java.util.List;
-import java.util.Set;
 
 public interface GradeService<T extends Grade> {
 

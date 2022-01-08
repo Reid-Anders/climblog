@@ -1,6 +1,6 @@
 package anderson.reid.climblog.services.JPAservices;
 
-import anderson.reid.climblog.domain.YDSGrade;
+import anderson.reid.climblog.domain.grade.YDSGrade;
 import anderson.reid.climblog.repositories.GradeRepository;
 import anderson.reid.climblog.services.GradeService;
 import org.springframework.stereotype.Service;

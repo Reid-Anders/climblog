@@ -1,6 +1,6 @@
 package anderson.reid.climblog.services;
 
-import anderson.reid.climblog.domain.SessionClimb;
+import anderson.reid.climblog.domain.sessionclimb.SessionClimb;
 
 import java.util.List;
 

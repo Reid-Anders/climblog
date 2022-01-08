@@ -1,7 +1,6 @@
 package anderson.reid.climblog.services.JPAservices;
 
-import anderson.reid.climblog.domain.Boulder;
-import anderson.reid.climblog.domain.Route;
+import anderson.reid.climblog.domain.climb.Route;
 import anderson.reid.climblog.exceptions.EmptyListException;
 import anderson.reid.climblog.repositories.RouteRepository;
 import anderson.reid.climblog.services.ClimbService;

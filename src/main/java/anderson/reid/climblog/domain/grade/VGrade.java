@@ -1,4 +1,4 @@
-package anderson.reid.climblog.domain;
+package anderson.reid.climblog.domain.grade;
 
 import lombok.NoArgsConstructor;
 

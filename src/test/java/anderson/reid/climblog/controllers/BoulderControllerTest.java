@@ -1,9 +1,8 @@
 package anderson.reid.climblog.controllers;
 
-import anderson.reid.climblog.domain.Boulder;
-import anderson.reid.climblog.domain.Grade;
-import anderson.reid.climblog.domain.Route;
-import anderson.reid.climblog.domain.VGrade;
+import anderson.reid.climblog.domain.climb.Boulder;
+import anderson.reid.climblog.domain.grade.Grade;
+import anderson.reid.climblog.domain.grade.VGrade;
 import anderson.reid.climblog.services.ClimbService;
 import anderson.reid.climblog.services.GradeService;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,9 +17,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.junit.jupiter.api.Assertions.*;

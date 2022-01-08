@@ -1,6 +1,6 @@
 package anderson.reid.climblog.services.JPAservices;
 
-import anderson.reid.climblog.domain.BoulderSession;
+import anderson.reid.climblog.domain.sessionclimb.BoulderSession;
 import anderson.reid.climblog.exceptions.EmptyListException;
 import anderson.reid.climblog.repositories.BoulderSessionRepository;
 import anderson.reid.climblog.services.SessionClimbService;

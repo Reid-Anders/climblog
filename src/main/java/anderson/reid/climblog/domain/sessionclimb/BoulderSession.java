@@ -1,5 +1,6 @@
-package anderson.reid.climblog.domain;
+package anderson.reid.climblog.domain.sessionclimb;
 
+import anderson.reid.climblog.domain.climb.Boulder;
 import lombok.*;
 
 import javax.persistence.*;
@@ -24,5 +25,20 @@ public class BoulderSession extends SessionClimb<Boulder> {
       super(id, climb, date, type, notes);
       this.attempts = attempts;
       this.spotters = spotters;
+   }
+
+   @Override
+   public boolean equals(Object o) {
+      BoulderSession rhs;
+
+      if(!(o instanceof BoulderSession)) {
+         return false;
+      } else {
+         rhs = (BoulderSession) o;
+      }
+
+      return this.attempts.equals(rhs.attempts) &&
+            this.spotters.equals(rhs.spotters) &&
+            super.equals(rhs);
    }
 }

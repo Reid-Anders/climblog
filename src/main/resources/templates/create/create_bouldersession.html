@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::body})">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Routes</title>
+
+  <link rel="stylesheet" href="../../static/resources/css/bootstrap.min.css">
+  <script src="../../static/resources/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<h1 class="text-center text-primary">Add Boulder Session</h1>
+
+<div class="mx-auto w-75">
+  <form th:object="${boulderSession}" th:action="@{/log/bouldersession/new_bouldersession/}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <select class="form-select mb-3" th:field="*{climb}">
+      <option value="5.10a" th:each="boulder : ${boulders}" th:value="${boulder.id}" th:text="${boulder}">Detour Stand, V8</option>
+      <option value="5.10b" th:remove="all">Baby Cthulhu, V7</option>
+      <option value="5.10c" th:remove="all">Dangleberries, V6</option>
+    </select>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-floating mb-3 mt-3">
+          <input type="number" class="form-control" id="attempts" placeholder="Attempts" name="attempts" max="100" min="0" th:field="*{attempts}" required>
+          <label for="attempts">Attempts</label>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="form-floating mb-3 mt-3">
+          <input type="date" class="form-control" id="date" th:field="*{date}">
+          <label for="date">Date</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-floating mb-3 mt-3">
+      <input type="text" class="form-control" id="spotters" placeholder="Spotters" th:field="*{spotters}">
+      <label for="spotters">Spotters</label>
+    </div>
+    <div class="row mx-auto mb-2">
+      <div class="col-md-2">
+        <div class="form-check">
+          <input type="radio" class="form-check-input" id="flash" name="status" th:value="F" th:field="*{type}">
+          <label class="form-check-label" for="flash">Flash</label>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-check">
+          <input type="radio" class="form-check-input" id="redpoint" name="status" th:value="R" th:field="*{type}">
+          <label class="form-check-label" for="redpoint">Redpoint</label>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-check">
+          <input type="radio" class="form-check-input" id="climbed" name="status" th:value="C" th:field="*{type}">
+          <label class="form-check-label" for="climbed">Climbed</label>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-check">
+          <input type="radio" class="form-check-input" id="work" name="status" th:value="W" th:field="*{type}">
+          <label class="form-check-label" for="work">Work</label>
+        </div>
+      </div>
+    </div>
+    <div class="form-floating mb-3 mt-3">
+      <textarea class="form-control" style="height:100px" id="notes" name="notes" placeholder="Notes..." th:field="*{notes}"></textarea>
+      <label for="notes">Notes...</label>
+    </div>
+
+    <input type="submit" class="btn btn-primary" value="Submit" />
+  </form>
+</div>
+
+</body>
+</html>

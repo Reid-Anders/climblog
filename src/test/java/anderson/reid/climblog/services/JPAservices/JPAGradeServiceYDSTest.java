@@ -1,21 +1,17 @@
 package anderson.reid.climblog.services.JPAservices;
 
-import anderson.reid.climblog.domain.Grade;
-import anderson.reid.climblog.domain.YDSGrade;
+import anderson.reid.climblog.domain.grade.Grade;
+import anderson.reid.climblog.domain.grade.YDSGrade;
 import anderson.reid.climblog.repositories.GradeRepository;
-import anderson.reid.climblog.services.GradeService;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
