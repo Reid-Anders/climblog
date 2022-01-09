@@ -2,12 +2,15 @@ package anderson.reid.climblog.controllers;
 
 import anderson.reid.climblog.exceptions.EmptyListException;
 import anderson.reid.climblog.exceptions.EntityNotFoundException;
+import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
+
+import java.net.ConnectException;
 
 @ControllerAdvice
 public class ExceptionController {

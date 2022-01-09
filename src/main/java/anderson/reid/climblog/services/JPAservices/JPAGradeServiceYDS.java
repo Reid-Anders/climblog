@@ -1,10 +1,12 @@
 package anderson.reid.climblog.services.JPAservices;
 
+import anderson.reid.climblog.domain.grade.Grade;
 import anderson.reid.climblog.domain.grade.YDSGrade;
 import anderson.reid.climblog.repositories.GradeRepository;
 import anderson.reid.climblog.services.GradeService;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.*;
 
 @Service
@@ -26,5 +28,11 @@ public class JPAGradeServiceYDS implements GradeService<YDSGrade> {
       });
       Collections.sort(grades);
       return grades;
+   }
+
+   @Override
+   public Grade findGradeById(Long id) {
+      Optional<Grade> grade = gradeRepository.findById(id);
+      return grade.orElse(null);
    }
 }

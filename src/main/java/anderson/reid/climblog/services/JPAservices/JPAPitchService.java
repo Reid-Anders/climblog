@@ -5,6 +5,7 @@ import anderson.reid.climblog.exceptions.EmptyListException;
 import anderson.reid.climblog.repositories.PitchRepository;
 import anderson.reid.climblog.repositories.RouteRepository;
 import anderson.reid.climblog.services.SessionClimbService;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

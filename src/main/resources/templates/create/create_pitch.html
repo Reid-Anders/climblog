@@ -28,38 +28,44 @@
             <input type="text" class="form-control" id="partner" placeholder="Partner" th:field="*{partner}">
             <label for="partner">Partner</label>
         </div>
-        <div class="row mx-auto mb-2">
-            <div class="col-md-2">
+        <div class="row d-flex justify-content-between">
+            <div class="col-md-1">
                 <div class="form-check">
                     <input type="radio" class="form-check-input" id="onsight" name="status" th:value="O" th:field="*{type}" checked>
                     <label class="form-check-label" for="onsight">Onsight</label>
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
                 <div class="form-check">
                     <input type="radio" class="form-check-input" id="flash" name="status" th:value="F" th:field="*{type}">
                     <label class="form-check-label" for="flash">Flash</label>
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
                 <div class="form-check">
                     <input type="radio" class="form-check-input" id="redpoint" name="status" th:value="R" th:field="*{type}">
                     <label class="form-check-label" for="redpoint">Redpoint</label>
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
                 <div class="form-check">
                     <input type="radio" class="form-check-input" id="climbed" name="status" th:value="C" th:field="*{type}">
                     <label class="form-check-label" for="climbed">Climbed</label>
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="attempt" name="status" th:value="A" th:field="*{type}">
+                    <label class="form-check-label" for="attempt">Attempt</label>
+                </div>
+            </div>
+            <div class="col-md-1">
                 <div class="form-check">
                     <input type="radio" class="form-check-input" id="work" name="status" th:value="W" th:field="*{type}">
                     <label class="form-check-label" for="work">Work</label>
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
                 <div class="form-check">
                     <input type="radio" class="form-check-input" id="toprope" name="status" th:value="T" th:field="*{type}">
                     <label class="form-check-label" for="toprope">Toprope</label>

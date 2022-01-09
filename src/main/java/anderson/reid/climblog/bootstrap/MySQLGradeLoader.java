@@ -1,38 +1,30 @@
 package anderson.reid.climblog.bootstrap;
 
-import anderson.reid.climblog.domain.climb.Boulder;
-import anderson.reid.climblog.domain.climb.Route;
 import anderson.reid.climblog.domain.grade.VGrade;
 import anderson.reid.climblog.domain.grade.YDSGrade;
-import anderson.reid.climblog.domain.sessionclimb.BoulderSession;
-import anderson.reid.climblog.domain.sessionclimb.Pitch;
-import anderson.reid.climblog.repositories.*;
+import anderson.reid.climblog.repositories.GradeRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
-
 @Component
-@Profile("default")
-public class DataLoader implements CommandLineRunner {
+@Profile("prod")
+public class MySQLGradeLoader implements CommandLineRunner {
 
-   private final RouteRepository routeRepository;
-   private final BoulderRepository boulderRepository;
-   private final PitchRepository pitchRepository;
-   private final BoulderSessionRepository boulderSessionRepository;
    private final GradeRepository gradeRepository;
 
-   public DataLoader(RouteRepository routeRepository, BoulderRepository boulderRepository, PitchRepository pitchRepository, BoulderSessionRepository boulderSessionRepository, GradeRepository gradeRepository) {
-      this.routeRepository = routeRepository;
-      this.boulderRepository = boulderRepository;
-      this.pitchRepository = pitchRepository;
-      this.boulderSessionRepository = boulderSessionRepository;
+   public MySQLGradeLoader(GradeRepository gradeRepository) {
       this.gradeRepository = gradeRepository;
    }
 
    @Override
    public void run(String... args) throws Exception {
+      if(gradeRepository.count() == 0) {
+         loadGrades();
+      }
+   }
+
+   private void loadGrades() {
       YDSGrade seven = new YDSGrade("5.7");
       YDSGrade eight = new YDSGrade("5.8");
       YDSGrade nine = new YDSGrade("5.9");
@@ -126,104 +118,5 @@ public class DataLoader implements CommandLineRunner {
       gradeRepository.save(v15);
       gradeRepository.save(v16);
       gradeRepository.save(v17);
-
-      Route r1 = Route.builder()
-            .name("Air Test")
-            .sector("Doctor's Wall")
-            .area("Skaha Bluffs")
-            .grade(thirteenA)
-            .status('R')
-            .length(40)
-            .build();
-
-      Route r2 = Route.builder()
-            .name("State of Love and Trust")
-            .sector("Lonely Boy")
-            .area("Lonely Crags")
-            .grade(twelveA)
-            .status('R')
-            .length(15)
-            .build();
-
-      Route r3 = Route.builder()
-            .name("Pressure Test")
-            .sector("Great White")
-            .area("Skaha Bluffs")
-            .grade(thirteenC)
-            .status('C')
-            .length(38)
-            .build();
-
-      routeRepository.save(r1);
-      routeRepository.save(r2);
-      routeRepository.save(r3);
-
-      Boulder b1 = Boulder.builder()
-            .name("Baby Cthulhu")
-            .sector("Burning Man")
-            .area("Boulderfields")
-            .grade(v7)
-            .status('R')
-            .build();
-
-      Boulder b2 = Boulder.builder()
-            .name("Dangleberries")
-            .sector("Dominator")
-            .area("Boulderfields")
-            .grade(v6)
-            .status('R')
-            .build();
-
-      boulderRepository.save(b1);
-      boulderRepository.save(b2);
-
-      Pitch p1 = Pitch.builder()
-            .climb(r1)
-            .date(LocalDate.now())
-            .partner("Landon Orr")
-            .type('R')
-            .notes("Great effort")
-            .build();
-
-      Pitch p2 = Pitch.builder()
-            .climb(r2)
-            .date(LocalDate.now())
-            .partner("Val Day")
-            .type('C')
-            .notes("Fell dumbly")
-            .build();
-
-      Pitch p3 = Pitch.builder()
-            .climb(r3)
-            .date(LocalDate.now())
-            .partner("Dan Ek")
-            .type('F')
-            .notes("Almost fell at the top")
-            .build();
-
-      pitchRepository.save(p1);
-      pitchRepository.save(p2);
-      pitchRepository.save(p3);
-
-      BoulderSession bs1 = BoulderSession.builder()
-            .climb(b1)
-            .date(LocalDate.now())
-            .attempts(15)
-            .type('R')
-            .spotters("")
-            .notes("One of the best climbs I've ever done")
-            .build();
-
-      BoulderSession bs2 = BoulderSession.builder()
-            .climb(b2)
-            .date(LocalDate.now())
-            .attempts(11)
-            .type('C')
-            .spotters("Val Day")
-            .notes("Really good tries today")
-            .build();
-
-      boulderSessionRepository.save(bs1);
-      boulderSessionRepository.save(bs2);
    }
 }

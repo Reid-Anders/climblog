@@ -7,4 +7,5 @@ import java.util.List;
 public interface GradeService<T extends Grade> {
 
    List<T> getGrades();
+   Grade findGradeById(Long id);
 }

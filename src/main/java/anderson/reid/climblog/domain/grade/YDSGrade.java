@@ -70,6 +70,7 @@ public class YDSGrade extends Grade {
       }
 
       assignSuffix();
+      System.out.println("decrementing grade");
    }
 
    private void assignSuffix() {
