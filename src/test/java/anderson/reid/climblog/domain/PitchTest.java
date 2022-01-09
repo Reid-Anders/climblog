@@ -16,11 +16,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class PitchTest {
 
    final static Route ROUTE = Route.builder()
+         .id(3L)
          .name("Air Test")
          .sector("Doctor's Wall")
          .area("Skaha Bluffs")
          .grade(new YDSGrade("5.13a"))
          .status('R')
+         .length(30)
          .build();
    final static LocalDate DATE = LocalDate.now();
    final static String PARTNER = "Landon Orr";

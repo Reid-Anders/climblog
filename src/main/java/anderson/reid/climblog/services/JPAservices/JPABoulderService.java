@@ -40,4 +40,9 @@ public class JPABoulderService implements ClimbService<Boulder> {
    public Boulder save(Boulder climb) {
       return boulderRepository.save(climb);
    }
+
+   @Override
+   public void deleteById(Long id) {
+      boulderRepository.deleteById(id);
+   }
 }

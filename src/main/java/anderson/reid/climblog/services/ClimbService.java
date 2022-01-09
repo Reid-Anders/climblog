@@ -9,4 +9,5 @@ public interface ClimbService<T extends Climb> {
    List<T> getClimbs();
    T findClimbById(Long id);
    T save(T climb);
+   void deleteById(Long id);
 }

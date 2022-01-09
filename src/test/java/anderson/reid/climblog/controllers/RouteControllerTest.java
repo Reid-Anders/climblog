@@ -83,7 +83,7 @@ class RouteControllerTest {
       ArgumentCaptor<List<Route>> argumentCaptor = ArgumentCaptor.forClass(List.class);
 
 
-      String viewName = controller.listRoutes(model);
+      String viewName = controller.listRoutes(false, model);
 
 
       assertEquals("climbs/routes", viewName);
@@ -137,5 +137,16 @@ class RouteControllerTest {
       mockMvc.perform(get("/climbs/route/1/edit"))
             .andExpect(status().isOk())
             .andExpect(view().name("create/create_route"));
+   }
+
+   @Test
+   void deleteRouteTest() throws Exception {
+      Route route = Route.builder().id(1L).build();
+
+      routeService.save(route);
+
+      mockMvc.perform(get("/climbs/route/1/delete"))
+            .andExpect(status().is3xxRedirection())
+            .andExpect(view().name("redirect:/climbs/route"));
    }
 }

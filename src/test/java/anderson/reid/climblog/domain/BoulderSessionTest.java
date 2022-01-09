@@ -16,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class BoulderSessionTest {
 
    final static Boulder BOULDER = Boulder.builder().name("Baby Cthulhu")
+         .id(1L)
          .sector("Burning Man")
          .area("Boulderfields")
          .grade(new VGrade("V7"))
@@ -32,6 +33,7 @@ class BoulderSessionTest {
    @BeforeEach
    void setUp() {
       boulderSession = BoulderSession.builder()
+            .id(1L)
             .climb(BOULDER)
             .attempts(ATTEMPTS)
             .spotters(SPOTTERS)

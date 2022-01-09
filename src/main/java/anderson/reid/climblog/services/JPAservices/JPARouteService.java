@@ -40,4 +40,9 @@ public class JPARouteService implements ClimbService<Route> {
    public Route save(Route climb) {
       return routeRepository.save(climb);
    }
+
+   @Override
+   public void deleteById(Long id) {
+      routeRepository.deleteById(id);
+   }
 }

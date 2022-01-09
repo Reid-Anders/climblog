@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class JPABoulderSessionService implements SessionClimbService<BoulderSession> {
@@ -36,5 +37,16 @@ public class JPABoulderSessionService implements SessionClimbService<BoulderSess
    @Override
    public BoulderSession save(BoulderSession sessionClimb) {
       return boulderSessionRepository.save(sessionClimb);
+   }
+
+   @Override
+   public BoulderSession findClimbSessionById(Long id) {
+      Optional<BoulderSession> boulderSession = boulderSessionRepository.findById(id);
+      return boulderSession.orElse(null);
+   }
+
+   @Override
+   public void deleteById(Long id) {
+      boulderSessionRepository.deleteById(id);
    }
 }

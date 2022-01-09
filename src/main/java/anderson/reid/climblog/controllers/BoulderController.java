@@ -5,6 +5,7 @@ import anderson.reid.climblog.domain.grade.VGrade;
 import anderson.reid.climblog.exceptions.EntityNotFoundException;
 import anderson.reid.climblog.services.ClimbService;
 import anderson.reid.climblog.services.GradeService;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -21,9 +22,10 @@ public class BoulderController {
       this.gradeService = gradeService;
    }
 
-   @RequestMapping({"", "/"})
-   public String listBoulders(Model model) {
+   @GetMapping(value = {"", "/"})
+   public String listBoulders(@RequestParam(value = "exception", required = false) boolean exception, Model model) {
       model.addAttribute("boulders", boulderService.getClimbs());
+      model.addAttribute("exception", exception);
       return "climbs/boulders";
    }
 
@@ -44,12 +46,23 @@ public class BoulderController {
    public String editBoulder(@PathVariable String id, Model model) {
       Boulder boulder = boulderService.findClimbById(Long.parseLong(id));
 
-      if(boulder == null) {
+      if (boulder == null) {
          throw new EntityNotFoundException("Boulder", id);
       }
 
       model.addAttribute("boulder", boulder);
       model.addAttribute("grades", gradeService.getGrades());
       return "create/create_boulder";
+   }
+
+   @GetMapping("/{id}/delete")
+   public String deleteBoulder(@PathVariable String id) {
+      boulderService.deleteById(Long.parseLong(id));
+      return "redirect:/climbs/boulder";
+   }
+
+   @ExceptionHandler(ConstraintViolationException.class)
+   public String handleBoulderInBoulderSession() {
+      return "redirect:/climbs/boulder?exception=true";
    }
 }

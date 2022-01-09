@@ -26,6 +26,7 @@
                 <th>Type</th>
                 <th>Notes</th>
                 <th>Edit</th>
+                <th>Delete</th>
             </thead>
             <tr th:each="boulderSession : ${boulderSessions}">
                 <td th:text="${boulderSession.climb.name}">Name</td>
@@ -37,7 +38,8 @@
                 <td th:text="${boulderSession.attempts}">15</td>
                 <td th:text="${boulderSession.type}">Type</td>
                 <td th:text="${boulderSession.notes}">Notes</td>
-                <td><a href="#" class="link-primary">Edit</a></td>
+                <td><a href="#" th:href="@{'/log/bouldersession/' + ${boulderSession.id} + '/edit'}" class="link-primary">Edit</a></td>
+                <td><a href="#" th:href="@{'/log/bouldersession/' + ${boulderSession.id} + '/delete'}" class="link-primary">Delete</a></td>
             </tr>
         </table>
 

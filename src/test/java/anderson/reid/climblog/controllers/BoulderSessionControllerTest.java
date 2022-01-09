@@ -22,6 +22,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -62,7 +63,7 @@ class BoulderSessionControllerTest {
 
    @Test
    void saveOrUpdateBoulderSessionMVCTest() throws Exception {
-      mockMvc.perform(get("/log/bouldersession/new_bouldersession"))
+      mockMvc.perform(post("/log/bouldersession/new_bouldersession"))
             .andExpect(status().is3xxRedirection())
             .andExpect(view().name("redirect:/log/bouldersession"));
    }

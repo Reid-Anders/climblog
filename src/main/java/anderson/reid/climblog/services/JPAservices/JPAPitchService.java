@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class JPAPitchService implements SessionClimbService<Pitch> {
@@ -41,5 +42,16 @@ public class JPAPitchService implements SessionClimbService<Pitch> {
       sessionClimb.getClimb().updateStatus(sessionClimb.getType());
       routeRepository.save(sessionClimb.getClimb());
       return pitchRepository.save(sessionClimb);
+   }
+
+   @Override
+   public Pitch findClimbSessionById(Long id) {
+      Optional<Pitch> pitch = pitchRepository.findById(id);
+      return pitch.orElse(null);
+   }
+
+   @Override
+   public void deleteById(Long id) {
+      pitchRepository.deleteById(id);
    }
 }

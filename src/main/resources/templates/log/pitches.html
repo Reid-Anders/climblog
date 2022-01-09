@@ -25,6 +25,7 @@
                 <th>Type</th>
                 <th>Notes</th>
                 <th>Edit</th>
+                <th>Delete</th>
             </thead>
             <tr th:each="pitch : ${pitches}">
                 <td th:text="${pitch.climb.name}">Name</td>
@@ -35,7 +36,8 @@
                 <td th:text="${pitch.partner}">Partner</td>
                 <td th:text="${pitch.type}">Type</td>
                 <td th:text="${pitch.notes}">Notes</td>
-                <td><a href="#" class="link-primary">Edit</a></td>
+                <td><a href="#" th:href="@{'/log/pitch/' + ${pitch.id} + '/edit'}" class="link-primary">Edit</a></td>
+                <td><a href="#" th:href="@{'/log/pitch/' + ${pitch.id} + '/delete'}" class="link-primary">Delete</a></td>
             </tr>
         </table>
 

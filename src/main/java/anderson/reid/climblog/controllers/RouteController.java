@@ -5,13 +5,11 @@ import anderson.reid.climblog.domain.grade.YDSGrade;
 import anderson.reid.climblog.exceptions.EntityNotFoundException;
 import anderson.reid.climblog.services.ClimbService;
 import anderson.reid.climblog.services.GradeService;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/climbs/route")
 @Controller
@@ -26,8 +24,9 @@ public class RouteController {
    }
 
    @RequestMapping({"", "/"})
-   public String listRoutes(Model model) {
+   public String listRoutes(@RequestParam(value = "exception", required = false) boolean exception, Model model) {
       model.addAttribute("routes", routeService.getClimbs());
+      model.addAttribute("exception", exception);
       return "climbs/routes";
    }
 
@@ -55,5 +54,16 @@ public class RouteController {
       model.addAttribute("route", route);
       model.addAttribute("grades", gradeService.getGrades());
       return "create/create_route";
+   }
+
+   @GetMapping("/{id}/delete")
+   public String deleteRoute(@PathVariable String id) {
+      routeService.deleteById(Long.parseLong(id));
+      return "redirect:/climbs/route";
+   }
+
+   @ExceptionHandler(ConstraintViolationException.class)
+   public String handleRouteInPitch() {
+      return "redirect:/climbs/route?exception=true";
    }
 }

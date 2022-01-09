@@ -84,7 +84,7 @@ class BoulderControllerTest {
       ArgumentCaptor<List<Boulder>> argumentCaptor = ArgumentCaptor.forClass(List.class);
 
 
-      String viewName = controller.listBoulders(model);
+      String viewName = controller.listBoulders(false, model);
 
 
       assertEquals("climbs/boulders", viewName);
@@ -138,5 +138,16 @@ class BoulderControllerTest {
       mockMvc.perform(get("/climbs/boulder/1/edit"))
             .andExpect(status().isOk())
             .andExpect(view().name("create/create_boulder"));
+   }
+
+   @Test
+   void deleteBoulderTest() throws Exception {
+      Boulder boulder = Boulder.builder().id(1L).build();
+
+      boulderService.save(boulder);
+
+      mockMvc.perform(get("/climbs/boulder/1/delete"))
+            .andExpect(status().is3xxRedirection())
+            .andExpect(view().name("redirect:/climbs/boulder"));
    }
 }

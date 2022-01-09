@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout :: layout(~{::body})">
-'
+
     <head>
         <meta charset="UTF-8">
         <title>Boulders</title>
@@ -15,6 +15,10 @@
             <a class="btn btn-lg btn-primary m-2" href="#" th:href="@{/climbs/boulder/create}">Add Boulders</a>
         </div>
 
+        <div th:if="${exception}" class="text-center text-warning mb-3">
+            Cannot delete a boulder if it is used in a boulder session!
+        </div>
+
         <table class="table table-hover">
             <thead class="table-primary">
                 <th>Name</th>
@@ -23,6 +27,7 @@
                 <th>Grade</th>
                 <th>Status</th>
                 <th>Edit</th>
+                <th>Delete</th>
             </thead>
             <tr th:each="boulder : ${boulders}">
                 <td th:text="${boulder.name}">Baby Cthulhu</td>
@@ -31,6 +36,7 @@
                 <td th:text="${boulder.grade}">V7</td>
                 <td th:text="${boulder.status}">R</td>
                 <td><a href="#" th:href="@{'/climbs/boulder/' + ${boulder.id} + '/edit'}" class="link-primary">Edit</a></td>
+                <td><a href="#" th:href="@{'/climbs/boulder/' + ${boulder.id} + '/delete'}" class="link-primary">Delete</a></td>
             </tr>
             <tr th:remove="all">
                 <td>Dangleberries</td>
@@ -39,6 +45,7 @@
                 <td>V6</td>
                 <td>R</td>
                 <td><a href="#" class="link-primary">Edit</a></td>
+                <td><a href="#" class="link-primary">Delete</a></td>
             </tr>
             <tr th:remove="all">
                 <td>Detour Stand</td>
@@ -47,6 +54,7 @@
                 <td>V8</td>
                 <td>C</td>
                 <td><a href="#" class="link-primary">Edit</a></td>
+                <td><a href="#" class="link-primary">Delete</a></td>
             </tr>
         </table>
 

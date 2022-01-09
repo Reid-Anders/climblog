@@ -14,6 +14,10 @@
             <a class="btn btn-lg btn-primary m-2" href="#" th:href="@{/climbs/route/create}">Add Routes</a>
         </div>
 
+        <div th:if="${exception}" class="text-center text-warning mb-3">
+            Cannot delete a route if it is used in a pitch!
+        </div>
+
         <table class="table table-hover">
             <thead class="table-primary">
                 <th>Name</th>
@@ -23,6 +27,7 @@
                 <th>Status</th>
                 <th>Length</th>
                 <th>Edit</th>
+                <th>Delete</th>
             </thead>
             <tr th:each="route : ${routes}">
                 <td th:text="${route.name}">Air Test</td>
@@ -32,6 +37,7 @@
                 <td th:text="${route.status}">R</td>
                 <td th:text="${route.length} + 'm'">40m</td>
                 <td><a href="#" th:href="@{'/climbs/route/' + ${route.id} + '/edit'}" class="link-primary">Edit</a></td>
+                <td><a href="#" th:href="@{'/climbs/route/' + ${route.id} + '/delete'}" class="link-primary">Delete</a></td>
             </tr>
             <tr th:remove="all">
                 <td>Pressure Test</td>
@@ -41,6 +47,7 @@
                 <td>C</td>
                 <td>40m</td>
                 <td><a href="#" class="link-primary">Edit</a></td>
+                <td><a href="#" class="link-primary">Delete</a></td>
             </tr>
             <tr th:remove="all">
                 <td>The Replicant</td>
@@ -50,6 +57,7 @@
                 <td>C</td>
                 <td>30m</td>
                 <td><a href="#" class="link-primary">Edit</a></td>
+                <td><a href="#" class="link-primary">Delete</a></td>
             </tr>
         </table>
 

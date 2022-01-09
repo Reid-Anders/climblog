@@ -2,6 +2,7 @@ package anderson.reid.climblog.controllers;
 
 import anderson.reid.climblog.exceptions.EmptyListException;
 import anderson.reid.climblog.exceptions.EntityNotFoundException;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
