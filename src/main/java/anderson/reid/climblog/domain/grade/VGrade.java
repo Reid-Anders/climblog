@@ -3,12 +3,11 @@ package anderson.reid.climblog.domain.grade;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
+import javax.persistence.Transient;
 
 @NoArgsConstructor
 @Entity
 public class VGrade extends Grade {
-
-   private int n;
 
    public VGrade(int n) {
       this.prefix = "V";

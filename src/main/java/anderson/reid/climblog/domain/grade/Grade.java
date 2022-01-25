@@ -1,6 +1,5 @@
 package anderson.reid.climblog.domain.grade;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,9 +16,15 @@ public abstract class Grade implements Comparable<Grade> {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    protected Long id;
-
+   
+   @Column(name = "prefix")
    protected String prefix;
+
+   @Column(name = "suffix")
    protected String suffix;
+
+   @Transient
+   protected int n;
 
    @Override
    public String toString() {

@@ -10,6 +10,7 @@ spring:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     database: mysql
     show-sql: false
+ #use this to easily get the database schema to build the database
 #    properties:
 #      javax:
 #        persistence:

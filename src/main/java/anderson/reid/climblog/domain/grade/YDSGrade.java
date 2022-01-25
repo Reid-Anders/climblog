@@ -3,12 +3,16 @@ package anderson.reid.climblog.domain.grade;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
+import javax.persistence.Transient;
 
 @NoArgsConstructor
 @Entity
 public class YDSGrade extends Grade {
 
+   @Transient
    private int n;
+
+   @Transient
    private char c;
 
    public YDSGrade(int n) {
